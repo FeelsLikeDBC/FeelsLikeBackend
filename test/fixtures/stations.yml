@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lat: 1.5
+  lng: 1.5
+  pws_id: MyString
+  name: MyString
+  forecast_id: 1
+
+two:
+  lat: 1.5
+  lng: 1.5
+  pws_id: MyString
+  name: MyString
+  forecast_id: 1

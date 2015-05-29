@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  station_id: 1
+  feelslike: MyString
+  temp: MyString
+  dewpoint: MyString
+  wind_speed: MyString
+  wind_direction: MyString
+  humidity: MyString
+
+two:
+  station_id: 1
+  feelslike: MyString
+  temp: MyString
+  dewpoint: MyString
+  wind_speed: MyString
+  wind_direction: MyString
+  humidity: MyString
