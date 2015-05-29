@@ -42,8 +42,6 @@ end
 
 class DB_SEEDER
 
-  include HTTP
-
   @@calls = 0
   @@fk_key_num = 0
   @@wu_key_num = 0
@@ -133,8 +131,8 @@ class DB_SEEDER
 
       return p message if date.day == 1 && date.month == 5 && date.year == 2015
 
-      wu_res = WU.send_request(wu_args(city,date))
-      fk_res = FK.send_request(fk_args(city,date))
+      wu_res = HTTP::WU.send_request(wu_args(city,date))
+      fk_res = HTTP::FK.send_request(fk_args(city,date))
 
       make_forecast(wu_res,fk_res,city)
 
