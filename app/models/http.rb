@@ -92,8 +92,8 @@ class DB_SEEDER
     def fk_args(date,city)
       {
         api: fk_key,
-        lat: city.lat,
-        lng: city.lng,
+        lat: city.lat.to_s,
+        lng: city.lng.to_s,
         time: date.strftime('%s') # UNIX time for Forecast.io
       }
     end
@@ -103,7 +103,7 @@ class DB_SEEDER
         for_hash['apparentTemperature'].to_i
       end
       avg_apparent_temp = apparent_temps.reduce(:+)/apparent_temps.length
-      Forecast.create(
+      WeatherDay.create(
         city_id: city.id,
         date: fk['daily']['data'][0]['time'],
         summary: fk['daily']['data'][0]['summary'],
