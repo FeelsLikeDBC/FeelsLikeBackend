@@ -1,15 +1,15 @@
 FeelsLike: A city climate comparison application.
 
-###TEAM:
+#TEAM:
 
-#Edwin Unger
+###Edwin Unger
 edwin@ungermail.com
 
-#Raghu Reddy
+###Raghu Reddy
 raghureddy.ram@gmail.com
 
-#Mark McQuillen
+###Mark McQuillen
 markdmcq@gmail.com
 
-#Jack Zampolin
+###Jack Zampolin
 jack.zampolin@gmail.com
