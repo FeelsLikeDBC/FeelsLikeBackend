@@ -8,3 +8,4 @@ gem 'unirest'
 gem 'pg'
 gem 'pry-rails'
 gem 'jbuilder'
+gem 'rails_12factor', group: :production
