@@ -1,7 +1,8 @@
 class CityController < ApplicationController
 
   def index
-    @weather = WeatherDay.first
-    render json: @weather
+    @city = City.first
+    @weather1 = WeatherDay.first
+    render json: {city: @city, weather: @weather}
   end
 end
