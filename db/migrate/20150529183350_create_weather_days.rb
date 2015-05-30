@@ -6,21 +6,21 @@ class CreateWeatherDays < ActiveRecord::Migration
       t.string  :summary
       t.integer :sunrise
       t.integer :sunset
-      t.integer :cloud_cover
+      t.decimal :cloud_cover, :scale => 2
       t.boolean :rain
-      t.integer :precipitation
+      t.decimal :precipitation, :scale => 2
       t.boolean :snow
-      t.integer :snowfall
-      t.integer :avg_temp
-      t.integer :high_temp
-      t.integer :low_temp
+      t.decimal :snowfall, :scale => 2
+      t.integer :avg_temp, :scale => 2
+      t.integer :high_temp, :scale => 2
+      t.integer :low_temp, :scale => 2
       t.integer :avg_dewpt
       t.integer :avg_wind_spd
       t.integer :avg_wind_dir
       t.integer :humidity
-      t.integer :high_apparent_temp
-      t.integer :low_apparent_temp
-      t.integer :avg_apparent_temp
+      t.integer :high_apparent_temp, :scale => 2
+      t.integer :low_apparent_temp, :scale => 2
+      t.integer :avg_apparent_temp, :scale => 2
 
       t.timestamps null: false
     end

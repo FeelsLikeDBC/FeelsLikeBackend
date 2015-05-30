@@ -92,7 +92,9 @@ class DB_SEEDER
         api: fk_key,
         lat: city.lat.to_s,
         lng: city.lng.to_s,
-        time: date.strftime('%s') # UNIX time for Forecast.io
+        time: date.strftime('%s%z') # UNIX time for Forecast.io
+        #1430377200 april 30 pst, midnight
+        #1430280000 april 28 pst, 9pm
       }
     end
 
@@ -110,28 +112,21 @@ class DB_SEEDER
         sunrise: fk.body['daily']['data'][0]['sunriseTime'],
         sunset: fk.body['daily']['data'][0]['sunsetTime'],
         cloud_cover: fk.body['daily']['data'][0]['cloudCover'],
-        #CLOUD COVER NEEDS TO BE FLOAT(2)
         rain: wu.body['history']['dailysummary'][0]['rain'],
         #RAIN WAS TRUE, BUT WEB DATA SAYS FALSE. I CHECKED THE DAY AFTER (4/30), AND IT COMES UP AS TRUE, SO I THINK THE DATES ARE MISMATCHED
         precipitation: wu.body['history']['dailysummary'][0]['precipi'],
-        #THIS IS FUCKING WEIRD. PRECIPI IS RETURNING A STRING CALLED 'T' IN THE WEB DATA. WE MAY NEED TO CALL THE PRECIP FROM FORECAST.IO. SHOULD ALSO BE A FLOAT, IN CASE LESS THAN .5 INCHES, ETC.
+        #THIS IS FUCKING WEIRD. PRECIPI IS RETURNING A STRING CALLED 'T' IN THE WEB DATA. WE MAY NEED TO CALL THE PRECIP FROM FORECAST.IO.
         snow: wu.body['history']['dailysummary'][0]['snow'],
         snowfall: wu.body['history']['dailysummary'][0]['snowfalli'],
-        #WILL LIKELY ALSO NEED TO BE A FLOAT(2)
         avg_temp: wu.body['history']['dailysummary'][0]['meantempi'],
-        #SHOULD BE FINE AS AN INTEGER, BUT COULD BE FLOAT(2)
         high_temp: wu.body['history']['dailysummary'][0]['maxtempi'],
-        #SHOULD BE FINE AS AN INTEGER, BUT COULD BE FLOAT(2)
         low_temp: wu.body['history']['dailysummary'][0]['mintempi'],
-        #SHOULD BE FINE AS AN INTEGER, BUT COULD BE FLOAT(2)
         avg_dewpt: wu.body['history']['dailysummary'][0]['meandewpti'],
         avg_wind_spd: wu.body['history']['dailysummary'][0]['meanwindspdi'],
         avg_wind_dir: wu.body['history']['dailysummary'][0]['meanwdird'],
         humidity: wu.body['history']['dailysummary'][0]['humidity'],
         high_apparent_temp: fk.body['daily']['data'][0]['apparentTemperatureMax'],
-        #SHOULD BE FINE AS AN INTEGER, BUT COULD BE FLOAT(2)
         low_apparent_temp: fk.body['daily']['data'][0]['apparentTemperatureMin'],
-        #SHOULD BE FINE AS AN INTEGER, BUT COULD BE FLOAT(2)
         avg_apparent_temp: avg_apparent_temp.to_i
         #RECEIVED 59. DID HOURLY TEMPS BY HAND, GOT 60.02
         #WE SHOULD DEF THINK ABOUT GETTING AVG FROM JUST LIGHT HOURS, BECAUSE SAYING IT FEELS LIKE 59 WHEN THE HIGH IS 74 COULD BE CONFUSING FOR A USER. IF WE CUT OUT THE DARK HOURS WHEN IT'S COLDEST, THE DATA WON'T BE AS SKEWED.
@@ -168,6 +163,6 @@ class DB_SEEDER
   end
 end
 
-# DB_SEEDER.pull_city_data(City.first,Date.new(2015,04,01))
+# DB_SEEDER.pull_city_data(City.first,Date.new(2015,04,25))
 
 
