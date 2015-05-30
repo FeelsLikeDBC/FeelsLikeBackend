@@ -92,20 +92,37 @@ class DB_SEEDER
         api: fk_key,
         lat: city.lat.to_s,
         lng: city.lng.to_s,
-        time: date.strftime('%s%z') # UNIX time for Forecast.io
+        time: date.strftime('%s').to_i # UNIX time for Forecast.io
+
         #1430377200 april 30 pst, midnight
         #1430280000 april 28 pst, 9pm
       }
     end
 
     def make_forecast(wu,fk,city)
-      apparent_temps = fk.body['hourly']['data'].map do |for_hash|
-        for_hash['apparentTemperature'].to_i
+      @apparent_day_temps = []
+      @apparent_night_temps = []
+      @sunrise = fk.body['daily']['data'][0]['sunriseTime'].to_i
+      @sunset = fk.body['daily']['data'][0]['sunsetTime'].to_i
+      fk.body['hourly']['data'].each do |hour|
+        @time = hour['time'].to_i
+        if @time > @sunrise && @time < @sunset
+          @apparent_day_temps << hour['apparentTemperature'].to_f
+        else
+          @apparent_night_temps << hour['apparentTemperature'].to_f
+        end
       end
-      avg_apparent_temp = apparent_temps.reduce(:+)/apparent_temps.length
+      @year = Time.at(fk.body['daily']['data'][0]['time'].to_i).strftime('%Y').to_i
+      @month = Time.at(fk.body['daily']['data'][0]['time'].to_i).strftime('%m').to_i
+      @day = Time.at(fk.body['daily']['data'][0]['time'].to_i).strftime('%d').to_i
+      avg_apparent_day_temp = @apparent_day_temps.reduce(:+)/@apparent_day_temps.length
+      avg_apparent_night_temp = @apparent_night_temps.reduce(:+)/@apparent_night_temps.length
       WeatherDay.create(
         city_id: city.id,
         date: fk.body['daily']['data'][0]['time'],
+        year: @year,
+        month: @month,
+        day: @day,
         #LAST WEATHERDAY OBJECTS WAS 4/29/15, MISSING 4/30. WAS IT CALLED?
         #THEORY: EPOCH TIME IS ON GMT, SO WE NEED TO PUSH HOURS FORWARD
         summary: fk.body['daily']['data'][0]['summary'],
@@ -127,7 +144,8 @@ class DB_SEEDER
         humidity: wu.body['history']['dailysummary'][0]['humidity'],
         high_apparent_temp: fk.body['daily']['data'][0]['apparentTemperatureMax'],
         low_apparent_temp: fk.body['daily']['data'][0]['apparentTemperatureMin'],
-        avg_apparent_temp: avg_apparent_temp.to_i
+        avg_apparent_day_temp: avg_apparent_day_temp.to_f,
+        avg_apparent_night_temp: avg_apparent_night_temp.to_f
         #RECEIVED 59. DID HOURLY TEMPS BY HAND, GOT 60.02
         #WE SHOULD DEF THINK ABOUT GETTING AVG FROM JUST LIGHT HOURS, BECAUSE SAYING IT FEELS LIKE 59 WHEN THE HIGH IS 74 COULD BE CONFUSING FOR A USER. IF WE CUT OUT THE DARK HOURS WHEN IT'S COLDEST, THE DATA WON'T BE AS SKEWED.
         #SINCE WE TALKED ABOUT IT, MAYBE DAYTIME_FEELS_LIKE, NIGHTTIME_FEELS_LIKE?
@@ -151,7 +169,8 @@ class DB_SEEDER
     end
 
     def seed_city(city)
-      pull_city_data(city, Date.new(2010,06,01))
+      pull_city_data(city, DateTime.new(2010,6,1,0,0,0, city.offset))
+      # date = DateTime.new(2015,05,29,20,30,0, '-07:00')
     end
 
     def seed_cities(cities)
@@ -163,6 +182,6 @@ class DB_SEEDER
   end
 end
 
-# DB_SEEDER.pull_city_data(City.first,Date.new(2015,04,25))
+# DB_SEEDER.pull_city_data(City.first,DateTime.new(2015,4,25,0,0,0, City.first.offset))
 
 
