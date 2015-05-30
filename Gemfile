@@ -5,6 +5,6 @@ gem 'dotenv-rails', :groups => [:development, :test]
 gem 'rails-api'
 gem 'spring', :group => :development
 gem 'unirest'
-gem 'sqlite3'
+gem 'pg'
 gem 'pry-rails'
 gem 'jbuilder'

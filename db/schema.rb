@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150529183350) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cities", force: :cascade do |t|
     t.string   "name"
     t.string   "state"
@@ -29,11 +32,11 @@ ActiveRecord::Schema.define(version: 20150529183350) do
     t.string   "summary"
     t.integer  "sunrise"
     t.integer  "sunset"
-    t.integer  "cloud_cover"
+    t.decimal  "cloud_cover",        precision: 5, scale: 2
     t.boolean  "rain"
-    t.integer  "precipitation"
+    t.decimal  "precipitation",      precision: 5, scale: 2
     t.boolean  "snow"
-    t.integer  "snowfall"
+    t.decimal  "snowfall",           precision: 5, scale: 2
     t.integer  "avg_temp"
     t.integer  "high_temp"
     t.integer  "low_temp"
@@ -44,8 +47,8 @@ ActiveRecord::Schema.define(version: 20150529183350) do
     t.integer  "high_apparent_temp"
     t.integer  "low_apparent_temp"
     t.integer  "avg_apparent_temp"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
   end
 
 end
