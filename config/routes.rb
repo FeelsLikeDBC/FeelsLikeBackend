@@ -4,16 +4,7 @@ Rails.application.routes.draw do
     resources :weather_day, shallow: true
   end
 
-  # match '/SF' => "city#sf", :via => [:get]
+  match '/city/:id/feels_like' => "weather_day#feels_like", :via => [:get]
 
-  # # match '/sf/' => "weather_day#"
-
-  # match '/RVA' => "city#richmond", :via => [:get]
-
-  # match '/CHI' => "city#chicago", :via => [:get]
-
-  # match '/NYC' => "city#ny", :via => [:get]
-
-  # match '/KC' => "city#kc", :via => [:get]
 
 end

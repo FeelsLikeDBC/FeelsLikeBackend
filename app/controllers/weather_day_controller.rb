@@ -1,7 +1,7 @@
 class WeatherDayController < ApplicationController
 
   def feels_like
-    @city = City.find(params[:city])
+    @city = City.find(params[:id])
     @weather = @city.weather_days.map do |day|
       {
         date: day.date,
