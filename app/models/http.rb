@@ -78,7 +78,7 @@ class DB_SEEDER
 
     def wu_args(date,city)
       {
-        api: wu_key,
+        api: ENV['WUAPI_KEY1'],
         year: date.strftime('%Y'), # Year as string for WU
         month: date.strftime('%m'), # Month as string for WU
         day: date.strftime('%d'), # Day as string for WU
@@ -149,14 +149,14 @@ class DB_SEEDER
 
       message = "Done with #{city.name} forecast pull."
 
-      return p message if date.day == 1 && date.month == 5 && date.year == 2012
+      return p message if date.day == 1 && date.month == 5 && date.year == 2015
 
       wu_res = HTTP::WU.send_request(wu_args(date,city))
       fk_res = HTTP::FK.send_request(fk_args(date,city))
 
       make_forecast(wu_res,fk_res,city)
 
-      inc_calls # Increments the number of calls
+      # inc_calls # Increments the number of calls
 
       pull_city_data(city, date + 1)
     end
@@ -175,6 +175,6 @@ class DB_SEEDER
   end
 end
 
-# DB_SEEDER.pull_city_data(City.second,DateTime.new(2011,5,1,0,0,0, City.second.offset))
+# DB_SEEDER.pull_city_data(City.second,DateTime.new(2012,5,1,0,0,0, City.second.offset))
 
 
