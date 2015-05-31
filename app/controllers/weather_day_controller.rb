@@ -1,7 +1,7 @@
 class WeatherDayController < ApplicationController
 
   def feels_like
-    @city = City.all
+    @city = City.find(1)
     @weather = @city.weather_days
     @date = []
     @avg_apparent_day_temp = []
