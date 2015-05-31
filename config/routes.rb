@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :city do
-    resources :weather_days, shallow: true
+    resources :weather_day, shallow: true
   end
 
   # match '/SF' => "city#sf", :via => [:get]

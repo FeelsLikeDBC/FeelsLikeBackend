@@ -1,5 +1,10 @@
 class CityController < ApplicationController
 
+  def index
+    @cities = City.all
+    render json: {cities: @cities}
+  end
+
   def show
     @city = City.find(params[:id])
     @weather = @city.weather_days.order(:date)
