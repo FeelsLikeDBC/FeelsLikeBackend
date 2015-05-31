@@ -9,9 +9,7 @@ class WeatherDayController < ApplicationController
       @avg_apparent_night_temp = day.avg_apparent_night_temp
       @high_apparent_temp = day.high_apparent_temp
       @low_apparent_temp = day.low_apparent_temp
-    end
     render json: {
-      block: @block,
       city: @city,
       date: @date,
       avg_apparent_day_temp: @avg_apparent_day_temp,
@@ -19,6 +17,7 @@ class WeatherDayController < ApplicationController
       high_apparent_temp: @high_apparent_temp,
       low_apparent_temp: @low_apparent_temp
     }
+    end
   end
 
 
