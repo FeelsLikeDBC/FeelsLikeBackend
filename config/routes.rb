@@ -24,4 +24,9 @@ Rails.application.routes.draw do
   match '/city/:id/rain_snow_monthly' => "weather_day#rain_snow_monthly", :via => [:get]
   match '/city/:id/rain_snow_yearly' => "weather_day#rain_snow_yearly", :via => [:get]
 
+# Everything Else
+  match '/city/:id/everything_else' => "weather_day#everything_else", :via => [:get]
+  match '/city/:id/everything_else_monthly' => "weather_day#everything_else_monthly", :via => [:get]
+  match '/city/:id/everything_else_yearly' => "weather_day#everything_else_yearly", :via => [:get]
+
 end

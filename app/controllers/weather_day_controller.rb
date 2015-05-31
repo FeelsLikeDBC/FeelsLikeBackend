@@ -293,4 +293,84 @@ class WeatherDayController < ApplicationController
       }
   end
 
+  def everything_else
+    @city = City.find(params[:id])
+    @weather = @city.weather_days.map do |day|
+      {
+        city: day.city_id,
+        date: day.date,
+        year: day.year,
+        month: day.month,
+        day: day.day,
+        summary: day.summary,
+        cloud_cover: day.cloud_cover,
+        avg_dewpt: day.avg_dewpt,
+        avg_wind_spd: day.avg_wind_spd,
+        avg_wind_dir: day.avg_wind_dir,
+        humidity: day.humidity
+      }
+    end
+    render json:
+      {
+        city: @city,
+        weather: @weather
+      }
+  end
+
+  def everything_else_monthly
+    @city = City.find(params[:id])
+    @weather = @city.weather_days.map do |day|
+      {
+        city: day.city_id,
+        date: day.date,
+        year: day.year,
+        month: day.month,
+        day: day.day,
+        summary: day.summary,
+        cloud_cover: day.cloud_cover,
+        avg_dewpt: day.avg_dewpt,
+        avg_wind_spd: day.avg_wind_spd,
+        avg_wind_dir: day.avg_wind_dir,
+        humidity: day.humidity
+      }
+    end
+
+    @weather = @weather.group_by do |weather_hash|
+      weather_hash[:month]
+    end
+    render json:
+      {
+        city: @city,
+        weather: @weather
+      }
+  end
+
+  def everything_else_yearly
+    @city = City.find(params[:id])
+    @weather = @city.weather_days.map do |day|
+      {
+        city: day.city_id,
+        date: day.date,
+        year: day.year,
+        month: day.month,
+        day: day.day,
+        summary: day.summary,
+        cloud_cover: day.cloud_cover,
+        avg_dewpt: day.avg_dewpt,
+        avg_wind_spd: day.avg_wind_spd,
+        avg_wind_dir: day.avg_wind_dir,
+        humidity: day.humidity
+      }
+    end
+
+    @weather = @weather.group_by do |weather_hash|
+      weather_hash[:year]
+    end
+    render json:
+      {
+        city: @city,
+        weather: @weather
+      }
+  end
+
 end

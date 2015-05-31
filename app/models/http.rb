@@ -127,10 +127,10 @@ class DB_SEEDER
         sunrise: fk.body['daily']['data'][0]['sunriseTime'], #
         sunset: fk.body['daily']['data'][0]['sunsetTime'], #
         cloud_cover: fk.body['daily']['data'][0]['cloudCover'],
-        rain: wu.body['history']['dailysummary'][0]['rain'],
-        precipitation: wu.body['history']['dailysummary'][0]['precipi'],
-        snow: wu.body['history']['dailysummary'][0]['snow'],
-        snowfall: wu.body['history']['dailysummary'][0]['snowfalli'],
+        rain: wu.body['history']['dailysummary'][0]['rain'], #
+        precipitation: wu.body['history']['dailysummary'][0]['precipi'], #
+        snow: wu.body['history']['dailysummary'][0]['snow'], #
+        snowfall: wu.body['history']['dailysummary'][0]['snowfalli'], #
         avg_temp: wu.body['history']['dailysummary'][0]['meantempi'], #
         high_temp: wu.body['history']['dailysummary'][0]['maxtempi'], #
         low_temp: wu.body['history']['dailysummary'][0]['mintempi'], #
