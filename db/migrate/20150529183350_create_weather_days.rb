@@ -3,6 +3,7 @@ class CreateWeatherDays < ActiveRecord::Migration
     create_table :weather_days do |t|
       t.integer :city_id
       t.integer :date
+
       t.integer :year
       t.integer :month
       t.integer :day
