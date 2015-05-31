@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
 
-  root 'city#index'
+  match '/sf' => "city#sf", :via => [:get]
+
+  match '/richmond' => "city#richmond", :via => [:get]
+
+  match '/chicago' => "city#chicago", :via => [:get]
+
+  match '/ny' => "city#ny", :via => [:get]
+
+  match '/kc' => "city#kc", :via => [:get]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   # You can have the root of your site routed with "root"

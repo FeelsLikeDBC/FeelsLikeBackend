@@ -123,16 +123,12 @@ class DB_SEEDER
         year: @year,
         month: @month,
         day: @day,
-        #LAST WEATHERDAY OBJECTS WAS 4/29/15, MISSING 4/30. WAS IT CALLED?
-        #THEORY: EPOCH TIME IS ON GMT, SO WE NEED TO PUSH HOURS FORWARD
         summary: fk.body['daily']['data'][0]['summary'],
         sunrise: fk.body['daily']['data'][0]['sunriseTime'],
         sunset: fk.body['daily']['data'][0]['sunsetTime'],
         cloud_cover: fk.body['daily']['data'][0]['cloudCover'],
         rain: wu.body['history']['dailysummary'][0]['rain'],
-        #RAIN WAS TRUE, BUT WEB DATA SAYS FALSE. I CHECKED THE DAY AFTER (4/30), AND IT COMES UP AS TRUE, SO I THINK THE DATES ARE MISMATCHED
         precipitation: wu.body['history']['dailysummary'][0]['precipi'],
-        #THIS IS FUCKING WEIRD. PRECIPI IS RETURNING A STRING CALLED 'T' IN THE WEB DATA. WE MAY NEED TO CALL THE PRECIP FROM FORECAST.IO.
         snow: wu.body['history']['dailysummary'][0]['snow'],
         snowfall: wu.body['history']['dailysummary'][0]['snowfalli'],
         avg_temp: wu.body['history']['dailysummary'][0]['meantempi'],
@@ -146,9 +142,6 @@ class DB_SEEDER
         low_apparent_temp: fk.body['daily']['data'][0]['apparentTemperatureMin'],
         avg_apparent_day_temp: avg_apparent_day_temp.to_f,
         avg_apparent_night_temp: avg_apparent_night_temp.to_f
-        #RECEIVED 59. DID HOURLY TEMPS BY HAND, GOT 60.02
-        #WE SHOULD DEF THINK ABOUT GETTING AVG FROM JUST LIGHT HOURS, BECAUSE SAYING IT FEELS LIKE 59 WHEN THE HIGH IS 74 COULD BE CONFUSING FOR A USER. IF WE CUT OUT THE DARK HOURS WHEN IT'S COLDEST, THE DATA WON'T BE AS SKEWED.
-        #SINCE WE TALKED ABOUT IT, MAYBE DAYTIME_FEELS_LIKE, NIGHTTIME_FEELS_LIKE?
       )
     end
 
@@ -182,6 +175,6 @@ class DB_SEEDER
   end
 end
 
-# DB_SEEDER.pull_city_data(City.first,DateTime.new(2015,4,25,0,0,0, City.first.offset))
+# DB_SEEDER.pull_city_data(City.first,DateTime.new(2011,5,1,0,0,0, City.first.offset))
 
 
