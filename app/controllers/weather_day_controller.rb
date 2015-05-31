@@ -4,6 +4,7 @@ class WeatherDayController < ApplicationController
     @city = City.find(params[:id])
     @weather = @city.weather_days.map do |day|
       {
+        city: day.city_id,
         date: day.date,
         year: day.year,
         month: day.month,
@@ -25,6 +26,7 @@ class WeatherDayController < ApplicationController
     @city = City.find(params[:id])
     @weather = @city.weather_days.map do |day|
       {
+        city: day.city_id,
         date: day.date,
         year: day.year,
         month: day.month,
@@ -46,11 +48,11 @@ class WeatherDayController < ApplicationController
       }
   end
 
-
   def feels_like_yearly
     @city = City.find(params[:id])
     @weather = @city.weather_days.map do |day|
       {
+        city: day.city_id,
         date: day.date,
         year: day.year,
         month: day.month,
