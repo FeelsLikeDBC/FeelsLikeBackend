@@ -228,9 +228,9 @@ class WeatherDayController < ApplicationController
         year: day.year,
         month: day.month,
         day: day.day,
-        rain: day.rain
-        precipitation: day.precipitation
-        snow: day.snow
+        rain: day.rain,
+        precipitation: day.precipitation,
+        snow: day.snow,
         snowfall: day.snowfall
       }
     end
@@ -250,9 +250,9 @@ class WeatherDayController < ApplicationController
         year: day.year,
         month: day.month,
         day: day.day,
-        rain: day.rain
-        precipitation: day.precipitation
-        snow: day.snow
+        rain: day.rain,
+        precipitation: day.precipitation,
+        snow: day.snow,
         snowfall: day.snowfall
       }
     end
@@ -276,9 +276,9 @@ class WeatherDayController < ApplicationController
         year: day.year,
         month: day.month,
         day: day.day,
-        rain: day.rain
-        precipitation: day.precipitation
-        snow: day.snow
+        rain: day.rain,
+        precipitation: day.precipitation,
+        snow: day.snow,
         snowfall: day.snowfall
       }
     end
