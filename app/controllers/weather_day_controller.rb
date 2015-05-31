@@ -74,6 +74,76 @@ class WeatherDayController < ApplicationController
       }
   end
 
+  def actual_temp
+    @city = City.find(params[:id])
+    @weather = @city.weather_days.map do |day|
+      {
+        city: day.city_id,
+        date: day.date,
+        year: day.year,
+        month: day.month,
+        day: day.day,
+        avg_temp: day.meantempi,
+        high_temp: day.maxtempi,
+        low_temp: day.mintempi
+      }
+    end
+    render json:
+      {
+        city: @city,
+        weather: @weather
+      }
+  end
+
+  def actual_temp_monthly
+    @city = City.find(params[:id])
+    @weather = @city.weather_days.map do |day|
+      {
+        city: day.city_id,
+        date: day.date,
+        year: day.year,
+        month: day.month,
+        day: day.day,
+        avg_temp: day.meantempi,
+        high_temp: day.maxtempi,
+        low_temp: day.mintempi
+      }
+    end
+
+    @weather = @weather.group_by do |weather_hash|
+      weather_hash[:month]
+    end
+    render json:
+      {
+        city: @city,
+        weather: @weather
+      }
+  end
+
+  def actual_temp_yearly
+    @city = City.find(params[:id])
+    @weather = @city.weather_days.map do |day|
+      {
+        city: day.city_id,
+        date: day.date,
+        year: day.year,
+        month: day.month,
+        day: day.day,
+        avg_temp: day.meantempi,
+        high_temp: day.maxtempi,
+        low_temp: day.mintempi
+      }
+    end
+
+    @weather = @weather.group_by do |weather_hash|
+      weather_hash[:year]
+    end
+    render json:
+      {
+        city: @city,
+        weather: @weather
+      }
+  end
 
   # def temp_month
   #   @city = City.where(1) #CHANGE FOR PARAMS
