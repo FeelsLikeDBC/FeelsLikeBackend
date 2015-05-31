@@ -1,34 +1,15 @@
 class CityController < ApplicationController
 
-  def sf
-    @city = City.find(1)
+  def index
+    @city = City.find(params[:city])
     @weather = @city.weather_days.order(:date)
     render json: {city: @city, weather: @weather}
   end
 
-  def richmond
-    @city = City.find(2)
-    @weather = @city.weather_days.order(:date)
-    render json: {city: @city, weather: @weather}
-  end
+  private
 
+  def options_params(city, options)
 
-  def chicago
-    @city = City.find(3)
-    @weather = @city.weather_days.order(:date)
-    render json: {city: @city, weather: @weather}
-  end
-
-  def ny
-    @city = City.find(4)
-    @weather = @city.weather_days.order(:date)
-    render json: {city: @city, weather: @weather}
-  end
-
-  def kc
-    @city = City.find(5)
-    @weather = @city.weather_days.order(:date)
-    render json: {city: @city, weather: @weather}
   end
 
 end

@@ -1,23 +1,21 @@
 class WeatherDayController < ApplicationController
 
-  def sf_feels_like
-    @city = City.find(1)
-    @weather = @city.weather_days
-
-    @date = @weather.map { |day| day.date }
-    @avg_apparent_day_temp = @weather.map { |day| day.avg_apparent_day_temp }
-    @avg_apparent_night_temp = @weather.map { |day| day.avg_apparent_night_temp }
-    @high_apparent_temp = @weather.map { |day| day.high_apparent_temp }
-    @low_apparent_temp = @weather.map { |day| day.low_apparent_temp }
-
-    render json: {
-      city: @city,
-      date: @date,
-      avg_apparent_day_temp: @avg_apparent_day_temp,
-      avg_apparent_night_temp: @avg_apparent_night_temp,
-      high_apparent_temp: @high_apparent_temp,
-      low_apparent_temp: @low_apparent_temp
-    }
+  def feels_like
+    @city = City.find(params[:city])
+    @weather = @city.weather_days.map do |day|
+      {
+        date: day.date,
+        avg_apparent_day_temp: day.avg_apparent_day_temp,
+        avg_apparent_night_temp: day.avg_apparent_night_temp,
+        high_apparent_temp: day.high_apparent_temp,
+        low_apparent_temp: day.low_apparent_temp
+      }
+    end
+    render json:
+      {
+        city: @city,
+        weather: @weather
+      }
   end
 
 
