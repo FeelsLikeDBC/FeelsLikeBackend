@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   end
 
 # Feels Like
-  # match '/city/:id/feels_like' => "weather_day#feels_like", :via => [:get]
-  # match '/city/:id/feels_like_monthly' => "weather_day#feels_like_monthly", :via => [:get]
-  # match '/city/:id/feels_like_yearly' => "weather_day#feels_like_yearly", :via => [:get]
+  match '/city/:id/feels_like' => "weather_day#feels_like", :via => [:get]
+  match '/city/:id/feels_like_monthly' => "weather_day#feels_like_monthly", :via => [:get]
+  match '/city/:id/feels_like_yearly' => "weather_day#feels_like_yearly", :via => [:get]
 
 # Actual Temp
   # match '/city/:id/actual_temp' => "weather_day#actual_temp", :via => [:get]
