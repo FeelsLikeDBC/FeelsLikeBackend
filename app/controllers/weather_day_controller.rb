@@ -1,14 +1,19 @@
 class WeatherDayController < ApplicationController
 
   def feels_like
-    @city = City.find(1)
+    @city = City.all
     @weather = @city.weather_days
-    @weather.map do |day|
-      @date = day.date
-      @avg_apparent_day_temp = day.avg_apparent_day_temp
-      @avg_apparent_night_temp = day.avg_apparent_night_temp
-      @high_apparent_temp = day.high_apparent_temp
-      @low_apparent_temp = day.low_apparent_temp
+    @date = []
+    @avg_apparent_day_temp = []
+    @avg_apparent_night_temp = []
+    @high_apparent_temp = []
+    @low_apparent_temp = []
+    @weather.each do |day|
+      @date << day.date
+      @avg_apparent_day_temp << day.avg_apparent_day_temp
+      @avg_apparent_night_temp << day.avg_apparent_night_temp
+      @high_apparent_temp << day.high_apparent_temp
+      @low_apparent_temp << day.low_apparent_temp
     end
     render json: {
       city: @city,
