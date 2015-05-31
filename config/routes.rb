@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
 
-  match '/:city' => "city#index", :via => [:get]
+  get '/*city', to: "city#index"
 
 end
