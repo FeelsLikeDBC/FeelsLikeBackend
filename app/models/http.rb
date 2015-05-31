@@ -89,7 +89,7 @@ class DB_SEEDER
 
     def fk_args(date,city)
       {
-        api: fk_key,
+        api: ENV['FORECAST_KEY1'],
         lat: city.lat.to_s,
         lng: city.lng.to_s,
         time: date.strftime('%s').to_i # UNIX time for Forecast.io
