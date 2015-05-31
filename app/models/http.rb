@@ -149,7 +149,7 @@ class DB_SEEDER
 
       message = "Done with #{city.name} forecast pull."
 
-      return p message if date.day == 1 && date.month == 5 && date.year == 2011
+      return p message if date.day == 1 && date.month == 5 && date.year == 2012
 
       wu_res = HTTP::WU.send_request(wu_args(date,city))
       fk_res = HTTP::FK.send_request(fk_args(date,city))
@@ -175,6 +175,6 @@ class DB_SEEDER
   end
 end
 
-# DB_SEEDER.pull_city_data(City.first,DateTime.new(2010,5,1,0,0,0, City.first.offset))
+# DB_SEEDER.pull_city_data(City.second,DateTime.new(2011,5,1,0,0,0, City.second.offset))
 
 
