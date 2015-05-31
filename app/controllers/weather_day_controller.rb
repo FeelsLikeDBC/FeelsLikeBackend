@@ -83,9 +83,9 @@ class WeatherDayController < ApplicationController
         year: day.year,
         month: day.month,
         day: day.day,
-        avg_temp: day.meantempi,
-        high_temp: day.maxtempi,
-        low_temp: day.mintempi
+        avg_temp: day.avg_temp,
+        high_temp: day.high_temp,
+        low_temp: day.low_temp
       }
     end
     render json:
@@ -104,9 +104,9 @@ class WeatherDayController < ApplicationController
         year: day.year,
         month: day.month,
         day: day.day,
-        avg_temp: day.meantempi,
-        high_temp: day.maxtempi,
-        low_temp: day.mintempi
+        avg_temp: day.avg_temp,
+        high_temp: day.high_temp,
+        low_temp: day.low_temp
       }
     end
 
@@ -129,9 +129,9 @@ class WeatherDayController < ApplicationController
         year: day.year,
         month: day.month,
         day: day.day,
-        avg_temp: day.meantempi,
-        high_temp: day.maxtempi,
-        low_temp: day.mintempi
+        avg_temp: day.avg_temp,
+        high_temp: day.high_temp,
+        low_temp: day.low_temp
       }
     end
 
