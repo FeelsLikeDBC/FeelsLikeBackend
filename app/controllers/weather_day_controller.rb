@@ -5,11 +5,65 @@ class WeatherDayController < ApplicationController
     @weather = @city.weather_days.map do |day|
       {
         date: day.date,
+        year: day.year,
+        month: day.month,
+        day: day.day,
         avg_apparent_day_temp: day.avg_apparent_day_temp,
         avg_apparent_night_temp: day.avg_apparent_night_temp,
         high_apparent_temp: day.high_apparent_temp,
         low_apparent_temp: day.low_apparent_temp
       }
+    end
+    render json:
+      {
+        city: @city,
+        weather: @weather
+      }
+  end
+
+  def feels_like_monthly
+    @city = City.find(params[:id])
+    @weather = @city.weather_days.map do |day|
+      {
+        date: day.date,
+        year: day.year,
+        month: day.month,
+        day: day.day,
+        avg_apparent_day_temp: day.avg_apparent_day_temp,
+        avg_apparent_night_temp: day.avg_apparent_night_temp,
+        high_apparent_temp: day.high_apparent_temp,
+        low_apparent_temp: day.low_apparent_temp
+      }
+    end
+
+    @weather = @weather.group_by do |weather_hash|
+      weather_hash[:month]
+    end
+    render json:
+      {
+        city: @city,
+        weather: @weather
+      }
+  end
+
+
+  def feels_like_yearly
+    @city = City.find(params[:id])
+    @weather = @city.weather_days.map do |day|
+      {
+        date: day.date,
+        year: day.year,
+        month: day.month,
+        day: day.day,
+        avg_apparent_day_temp: day.avg_apparent_day_temp,
+        avg_apparent_night_temp: day.avg_apparent_night_temp,
+        high_apparent_temp: day.high_apparent_temp,
+        low_apparent_temp: day.low_apparent_temp
+      }
+    end
+
+    @weather = @weather.group_by do |weather_hash|
+      weather_hash[:year]
     end
     render json:
       {
