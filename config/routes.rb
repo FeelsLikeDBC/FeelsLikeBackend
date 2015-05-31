@@ -1,19 +1,13 @@
 Rails.application.routes.draw do
 
-  resources :cities do
-    resources :weather_days
-  end
+  match '/sf' => "city#sf", :via => [:get]
 
-  # match '/SF' => "city#sf", :via => [:get]
+  match '/richmond' => "city#richmond", :via => [:get]
 
-  # # match '/sf/' => "weather_day#"
+  match '/chicago' => "city#chicago", :via => [:get]
 
-  # match '/RVA' => "city#richmond", :via => [:get]
+  match '/ny' => "city#ny", :via => [:get]
 
-  # match '/CHI' => "city#chicago", :via => [:get]
-
-  # match '/NYC' => "city#ny", :via => [:get]
-
-  # match '/KC' => "city#kc", :via => [:get]
+  match '/kc' => "city#kc", :via => [:get]
 
 end

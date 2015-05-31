@@ -1,26 +1,23 @@
 class WeatherDayController < ApplicationController
 
   def temp_month
-    @city = City.find(1) #CHANGE FOR PARAMS
+    @city = City.where(1) #CHANGE FOR PARAMS
     @month = WeatherDay.where(city_id: @city.id, month: 5) #CHANGE FOR PARAMS
-    @avg_array = []
-    @high_array = []
-    @low_array = []
+    @average = []
+    @high = []
+    @low = []
     @month.each do |day|
-      @avg_array << day.avg_temp
-      @high_array << day.high_temp
-      @low_array << day.low_temp
+      @average << day.avg_temp
+      @high << day.high_temp
+      @low << day.low_temp
     end
-    @average = get_average(@avg_array)
-    @high = get_average(@high_array)
-    @low = get_average(@low_array)
     render json: {average: @average, high: @high, low: @low}
   end
 
   def feels_like_month
     @city = City.find(1) #CHANGE FOR PARAMS
     @month = WeatherDay.where(city_id: @city.id, month: 5) #CHANGE FOR PARAMS
-    @avg_day_array = []
+    @avg_feels_like_day = []
     @avg_night_array = []
     @high_array = []
     @low_array = []

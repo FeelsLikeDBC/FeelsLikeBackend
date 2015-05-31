@@ -149,7 +149,7 @@ class DB_SEEDER
 
       message = "Done with #{city.name} forecast pull."
 
-      return p message if date.day == 1 && date.month == 5 && date.year == 2015
+      return p message if date.day == 1 && date.month == 5 && date.year == 2011
 
       wu_res = HTTP::WU.send_request(wu_args(date,city))
       fk_res = HTTP::FK.send_request(fk_args(date,city))
