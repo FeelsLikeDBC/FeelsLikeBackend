@@ -124,24 +124,24 @@ class DB_SEEDER
         month: @month,
         day: @day,
         summary: fk.body['daily']['data'][0]['summary'],
-        sunrise: fk.body['daily']['data'][0]['sunriseTime'],
-        sunset: fk.body['daily']['data'][0]['sunsetTime'],
+        sunrise: fk.body['daily']['data'][0]['sunriseTime'], #
+        sunset: fk.body['daily']['data'][0]['sunsetTime'], #
         cloud_cover: fk.body['daily']['data'][0]['cloudCover'],
         rain: wu.body['history']['dailysummary'][0]['rain'],
         precipitation: wu.body['history']['dailysummary'][0]['precipi'],
         snow: wu.body['history']['dailysummary'][0]['snow'],
         snowfall: wu.body['history']['dailysummary'][0]['snowfalli'],
-        avg_temp: wu.body['history']['dailysummary'][0]['meantempi'],
-        high_temp: wu.body['history']['dailysummary'][0]['maxtempi'],
-        low_temp: wu.body['history']['dailysummary'][0]['mintempi'],
+        avg_temp: wu.body['history']['dailysummary'][0]['meantempi'], #
+        high_temp: wu.body['history']['dailysummary'][0]['maxtempi'], #
+        low_temp: wu.body['history']['dailysummary'][0]['mintempi'], #
         avg_dewpt: wu.body['history']['dailysummary'][0]['meandewpti'],
         avg_wind_spd: wu.body['history']['dailysummary'][0]['meanwindspdi'],
         avg_wind_dir: wu.body['history']['dailysummary'][0]['meanwdird'],
         humidity: wu.body['history']['dailysummary'][0]['humidity'],
-        high_apparent_temp: fk.body['daily']['data'][0]['apparentTemperatureMax'],
-        low_apparent_temp: fk.body['daily']['data'][0]['apparentTemperatureMin'],
-        avg_apparent_day_temp: avg_apparent_day_temp.to_f,
-        avg_apparent_night_temp: avg_apparent_night_temp.to_f
+        high_apparent_temp: fk.body['daily']['data'][0]['apparentTemperatureMax'], #
+        low_apparent_temp: fk.body['daily']['data'][0]['apparentTemperatureMin'], #
+        avg_apparent_day_temp: avg_apparent_day_temp.to_f, #
+        avg_apparent_night_temp: avg_apparent_night_temp.to_f #
       )
     end
 

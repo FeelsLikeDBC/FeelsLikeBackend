@@ -219,6 +219,78 @@ class WeatherDayController < ApplicationController
       }
   end
 
+  def rain_snow
+    @city = City.find(params[:id])
+    @weather = @city.weather_days.map do |day|
+      {
+        city: day.city_id,
+        date: day.date,
+        year: day.year,
+        month: day.month,
+        day: day.day,
+        rain: day.rain
+        precipitation: day.precipitation
+        snow: day.snow
+        snowfall: day.snowfall
+      }
+    end
+    render json:
+      {
+        city: @city,
+        weather: @weather
+      }
+  end
 
+  def rain_snow_monthly
+    @city = City.find(params[:id])
+    @weather = @city.weather_days.map do |day|
+      {
+        city: day.city_id,
+        date: day.date,
+        year: day.year,
+        month: day.month,
+        day: day.day,
+        rain: day.rain
+        precipitation: day.precipitation
+        snow: day.snow
+        snowfall: day.snowfall
+      }
+    end
+
+    @weather = @weather.group_by do |weather_hash|
+      weather_hash[:month]
+    end
+    render json:
+      {
+        city: @city,
+        weather: @weather
+      }
+  end
+
+  def rain_snow_yearly
+    @city = City.find(params[:id])
+    @weather = @city.weather_days.map do |day|
+      {
+        city: day.city_id,
+        date: day.date,
+        year: day.year,
+        month: day.month,
+        day: day.day,
+        rain: day.rain
+        precipitation: day.precipitation
+        snow: day.snow
+        snowfall: day.snowfall
+      }
+    end
+
+    @weather = @weather.group_by do |weather_hash|
+      weather_hash[:year]
+    end
+    render json:
+      {
+        city: @city,
+        weather: @weather
+      }
+  end
 
 end
