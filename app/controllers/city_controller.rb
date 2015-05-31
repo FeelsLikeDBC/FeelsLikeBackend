@@ -2,7 +2,7 @@ class CityController < ApplicationController
 
   def sf
     @city = City.find(1)
-    @weather = @city.weather_days
+    @weather = @city.weather_days.order(:date)
     render json: {city: @city, weather: @weather}
   end
 
