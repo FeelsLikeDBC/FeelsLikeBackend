@@ -859,7 +859,9 @@ class WeatherDayController < ApplicationController
       hour, minute = x.split(':')
       total_minutes = hour.to_i * 60 + minute.to_i
     end.reduce(:+)/size
-    "#{(avg_minutes/60).rjust(2, '0')}:#{(avg_minutes%60).rjust(2, '0')}"
+    hour_var = (avg_minutes/60).to_s
+    minute_var = (avg_minutes%60).to_s
+    "#{hour_var.rjust(2, '0')}:#{minute_var.rjust(2, '0')}"
   end
 
 end
