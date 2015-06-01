@@ -266,6 +266,121 @@ class WeatherDayController < ApplicationController
       }
   end
 
+  def feels_like_yearly_crushed
+    @city = City.find(params[:id])
+
+    @_2010_avg_day = []
+    @_2010_avg_night = []
+    @_2010_high = []
+    @_2010_low = []
+    @_2011_avg_day = []
+    @_2011_avg_night = []
+    @_2011_high = []
+    @_2011_low = []
+    @_2012_avg_day = []
+    @_2012_avg_night = []
+    @_2012_high = []
+    @_2012_low = []
+    @_2013_avg_day = []
+    @_2013_avg_night = []
+    @_2013_high = []
+    @_2013_low = []
+    @_2014_avg_day = []
+    @_2014_avg_night = []
+    @_2014_high = []
+    @_2014_low = []
+    @_2015_avg_day = []
+    @_2015_avg_night = []
+    @_2015_high = []
+    @_2015_low = []
+
+    @city.weather_days.order(:date).each do |day|
+      if day.year == 2010
+        @_2010_avg_day << day.avg_apparent_day_temp
+        @_2010_avg_night << day.avg_apparent_night_temp
+        @_2010_high << day.high_apparent_temp
+        @_2010_low << day.low_apparent_temp
+      elsif day.year == 2011
+        @_2011_avg_day << day.avg_apparent_day_temp
+        @_2011_avg_night << day.avg_apparent_night_temp
+        @_2011_high << day.high_apparent_temp
+        @_2011_low << day.low_apparent_temp
+      elsif day.year == 2012
+        @_2012_avg_day << day.avg_apparent_day_temp
+        @_2012_avg_night << day.avg_apparent_night_temp
+        @_2012_high << day.high_apparent_temp
+        @_2012_low << day.low_apparent_temp
+      elsif day.year == 2013
+        @_2013_avg_day << day.avg_apparent_day_temp
+        @_2013_avg_night << day.avg_apparent_night_temp
+        @_2013_high << day.high_apparent_temp
+        @_2013_low << day.low_apparent_temp
+      elsif day.year == 2014
+        @_2014_avg_day << day.avg_apparent_day_temp
+        @_2014_avg_night << day.avg_apparent_night_temp
+        @_2014_high << day.high_apparent_temp
+        @_2014_low << day.low_apparent_temp
+      elsif day.year == 2015
+        @_2015_avg_day << day.avg_apparent_day_temp
+        @_2015_avg_night << day.avg_apparent_night_temp
+        @_2015_high << day.high_apparent_temp
+        @_2015_low << day.low_apparent_temp
+      end
+    end
+    @_2010 =
+    {
+      _2010_avg_feels_like_day: @_2010_avg_day.reduce(:+)/@_2010_avg_day.length,
+      _2010_avg_feels_like_night: @_2010_avg_night.reduce(:+)/@_2010_avg_night.length,
+      _2010_feels_like_high: @_2010_high.reduce(:+)/@_2010_high.length,
+      _2010_feels_like_low: @_2010_low.reduce(:+)/@_2010_low.length
+    }
+    @_2011 =
+    {
+      _2011_avg_feels_like_day: @_2011_avg_day.reduce(:+)/@_2011_avg_day.length,
+      _2011_avg_feels_like_night: @_2011_avg_night.reduce(:+)/@_2011_avg_night.length,
+      _2011_feels_like_high: @_2011_high.reduce(:+)/@_2011_high.length,
+      _2011_feels_like_low: @_2011_low.reduce(:+)/@_2011_low.length
+    }
+    @_2012 =
+    {
+      _2012_avg_feels_like_day: @_2012_avg_day.reduce(:+)/@_2012_avg_day.length,
+      _2012_avg_feels_like_night: @_2012_avg_night.reduce(:+)/@_2012_avg_night.length,
+      _2012_feels_like_high: @_2012_high.reduce(:+)/@_2012_high.length,
+      _2012_feels_like_low: @_2012_low.reduce(:+)/@_2012_low.length
+    }
+    @_2013 =
+    {
+      _2013_avg_feels_like_day: @_2013_avg_day.reduce(:+)/@_2013_avg_day.length,
+      _2013_avg_feels_like_night: @_2013_avg_night.reduce(:+)/@_2013_avg_night.length,
+      _2013_feels_like_high: @_2013_high.reduce(:+)/@_2013_high.length,
+      _2013_feels_like_low: @_2013_low.reduce(:+)/@_2013_low.length
+    }
+    @_2014 =
+    {
+      _2014_avg_feels_like_day: @_2014_avg_day.reduce(:+)/@_2014_avg_day.length,
+      _2014_avg_feels_like_night: @_2014_avg_night.reduce(:+)/@_2014_avg_night.length,
+      _2014_feels_like_high: @_2014_high.reduce(:+)/@_2014_high.length,
+      _2014_feels_like_low: @_2014_low.reduce(:+)/@_2014_low.length
+    }
+    @_2015 =
+    {
+      _2015_avg_feels_like_day: @_2015_avg_day.reduce(:+)/@_2015_avg_day.length,
+      _2015_avg_feels_like_night: @_2015_avg_night.reduce(:+)/@_2015_avg_night.length,
+      _2015_feels_like_high: @_2015_high.reduce(:+)/@_2015_high.length,
+      _2015_feels_like_low: @_2015_low.reduce(:+)/@_2015_low.length
+    }
+
+    render json:
+    {
+      _2010: @_2010,
+      _2011: @_2011,
+      _2012: @_2012,
+      _2013: @_2013,
+      _2014: @_2014,
+      _2015: @_2015
+    }
+  end
+
   def feels_like_yearly
     @city = City.find(params[:id])
     @weather = @city.weather_days.order(:date).map do |day|
