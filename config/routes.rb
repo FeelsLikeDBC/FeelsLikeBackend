@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 # Feels Like
   match '/city/:id/feels_like' => "weather_day#feels_like", :via => [:get]
   match '/city/:id/feels_like_monthly' => "weather_day#feels_like_monthly", :via => [:get]
+  match '/city/:id/feels_like_monthly_crushed' => "weather_day#feels_like_monthly_crushed", :via => [:get]
   match '/city/:id/feels_like_yearly' => "weather_day#feels_like_yearly", :via => [:get]
 
 # Actual Temp
