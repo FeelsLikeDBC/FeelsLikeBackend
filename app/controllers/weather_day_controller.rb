@@ -638,9 +638,9 @@ class WeatherDayController < ApplicationController
       july_darkness: @jul_darkness.reduce(:+)/@jul_darkness.length,
       august_darkness: @aug_darkness.reduce(:+)/@aug_darkness.length,
       september_darkness: @sep_darkness.reduce(:+)/@sep_darkness.length,
-      october_darkness: @oct_darkness.reduce(:+)/@oct_darkness.length,
-      november_darkness: @nov_darkness.reduce(:+)/@nov_darkness.length,
-      december_darkness: @dec_darkness.reduce(:+)/@dec_darkness.length
+      october_darkness: @oct_darkness.reduce(:+)/@oct_darkness.length
+      # november_darkness: @nov_darkness.reduce(:+)/@nov_darkness.length,
+      # december_darkness: @dec_darkness.reduce(:+)/@dec_darkness.length
     ]
 
     render json:
