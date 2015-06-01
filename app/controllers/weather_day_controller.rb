@@ -140,7 +140,7 @@ class WeatherDayController < ApplicationController
     @jan_avg_day = @jan_avg_day.reduce(:+)/@jan_avg_day.length
     @jan_avg_night = @jan_avg_night.reduce(:+)/@jan_avg_night.length
     @jan_high = @jan_high.reduce(:+)/@jan_high.length
-    @jan_low = @jan_low.reduce(:+)/@jan_low.length
+    # @jan_low = @jan_low.reduce(:+)/@jan_low.length
     # @feb_avg_day = @feb_avg_day.reduce(:+)/@feb_avg_day.length
     # @feb_avg_night = @feb_avg_night.reduce(:+)/@feb_avg_night.length
     # @feb_high = @feb_high.reduce(:+)/@feb_high.length
@@ -190,8 +190,8 @@ class WeatherDayController < ApplicationController
     {
       january_avg_feels_like_day: @jan_avg_day,
       january_avg_feels_like_night: @jan_avg_night,
-      january_feels_like_high: @jan_high,
-      january_feels_like_low: @jan_low
+      january_feels_like_high: @jan_high
+      # january_feels_like_low: @jan_low
       # february_avg_feels_like_day: @feb_avg_day,
       # february_avg_feels_like_night: @feb_avg_night,
       # february_feels_like_high: @feb_high,
