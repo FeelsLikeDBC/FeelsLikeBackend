@@ -485,7 +485,7 @@ class WeatherDayController < ApplicationController
       _2014_high: @_2014_high.reduce(:+)/@_2014_high.length,
       _2015_high: @_2015_high.reduce(:+)/@_2015_high.length
     ]
-    @yearly_feels_like_low =
+    @yearly_low =
     [
       _2010_low: @_2010_low.reduce(:+)/@_2010_low.length,
       _2011_low: @_2011_low.reduce(:+)/@_2011_low.length,
