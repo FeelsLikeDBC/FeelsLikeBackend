@@ -170,7 +170,7 @@ class WeatherDayController < ApplicationController
       dec_avg_feels_like_night: @dec_avg_night.reduce(:+)/@dec_avg_night.length
     ]
 
-    @montly_feels_like_high =
+    @monthly_feels_like_high =
     [
       jan_feels_like_high: @jan_high.reduce(:+)/@jan_high.length,
       feb_feels_like_high: @feb_high.reduce(:+)/@feb_high.length,
