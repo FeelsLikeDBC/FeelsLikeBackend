@@ -467,8 +467,10 @@ class WeatherDayController < ApplicationController
   def rise_set_monthly_crushed
     @city = City.find(params[:id])
 
-    @jan_sunrise = []
-    @jan_sunset = []
+    @jan_sunrise_hour = []
+    @jan_sunrise_minute = []
+    @jan_sunset_hour = []
+    @jan_sunset_minute = []
     @jan_daylight = []
     @jan_darkness = []
     @feb_sunrise = []
