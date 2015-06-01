@@ -520,129 +520,127 @@ class WeatherDayController < ApplicationController
 
     @weather = @city.weather_days.order(:date).each do |day|
       if day.month == 1
-        @jan_sunrise_hour << Time.at(day.sunrise).strftime('%H').to_i
-        @jan_sunrise_minute << Time.at(day.sunrise).strftime('%M').to_i
-        @jan_sunset_hour << Time.at(day.sunset).strftime('%H').to_i
-        @jan_sunset_minute << Time.at(day.sunset).strftime('%M').to_i
+        @jan_sunrise << Time.at(day.sunrise).strftime('%H:%M')
+        @jan_sunset << Time.at(day.sunset).strftime('%H:%M')
         @jan_daylight << (day.sunset - day.sunrise)
         @jan_darkness << (86400 - (day.sunset - day.sunrise))
-      # elsif day.month == 2
-      #   @feb_sunrise << day.sunrise
-      #   @feb_sunset << day.sunset
-      #   @feb_daylight << (day.sunset - day.sunrise)
-      #   @feb_darkness << (86400 - (day.sunset - day.sunrise))
-      # elsif day.month == 3
-      #   @mar_sunrise << day.sunrise
-      #   @mar_sunset << day.sunset
-      #   @mar_daylight << (day.sunset - day.sunrise)
-      #   @mar_darkness << (86400 - (day.sunset - day.sunrise))
-      # elsif day.month == 4
-      #   @apr_sunrise << day.sunrise
-      #   @apr_sunset << day.sunset
-      #   @apr_daylight << (day.sunset - day.sunrise)
-      #   @apr_darkness << (86400 - (day.sunset - day.sunrise))
-      # elsif day.month == 5
-      #   @may_sunrise << day.sunrise
-      #   @may_sunset << day.sunset
-      #   @may_daylight << (day.sunset - day.sunrise)
-      #   @may_darkness << (86400 - (day.sunset - day.sunrise))
-      # elsif day.month == 6
-      #   @jun_sunrise << day.sunrise
-      #   @jun_sunset << day.sunset
-      #   @jun_daylight << (day.sunset - day.sunrise)
-      #   @jun_darkness << (86400 - (day.sunset - day.sunrise))
-      # elsif day.month == 7
-      #   @jul_sunrise << day.sunrise
-      #   @jul_sunset << day.sunset
-      #   @jul_daylight << (day.sunset - day.sunrise)
-      #   @jul_darkness << (86400 - (day.sunset - day.sunrise))
-      # elsif day.month == 8
-      #   @aug_sunrise << day.sunrise
-      #   @aug_sunset << day.sunset
-      #   @aug_daylight << (day.sunset - day.sunrise)
-      #   @aug_darkness << (86400 - (day.sunset - day.sunrise))
-      # elsif day.month == 9
-      #   @sep_sunrise << day.sunrise
-      #   @sep_sunset << day.sunset
-      #   @sep_daylight << (day.sunset - day.sunrise)
-      #   @sep_darkness << (86400 - (day.sunset - day.sunrise))
-      # elsif day.month == 10
-      #   @oct_sunrise << day.sunrise
-      #   @oct_sunset << day.sunset
-      #   @oct_daylight << (day.sunset - day.sunrise)
-      #   @oct_darkness << (86400 - (day.sunset - day.sunrise))
-      # elsif day.month == 11
-      #   @nov_sunrise << day.sunrise
-      #   @nov_sunset << day.sunset
-      #   @nov_daylight << (day.sunset - day.sunrise)
-      #   @nov_darkness << (86400 - (day.sunset - day.sunrise))
-      # elsif day.month == 12
-      #   @dec_sunrise << day.sunrise
-      #   @dec_sunset << day.sunset
-      #   @dec_daylight << (day.sunset - day.sunrise)
-      #   @dec_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 2
+        @feb_sunrise << Time.at(day.sunrise).strftime('%H:%M')
+        @feb_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @feb_daylight << (day.sunset - day.sunrise)
+        @feb_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 3
+        @mar_sunrise << Time.at(day.sunrise).strftime('%H:%M')
+        @mar_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @mar_daylight << (day.sunset - day.sunrise)
+        @mar_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 4
+        @apr_sunrise << Time.at(day.sunrise).strftime('%H:%M')
+        @apr_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @apr_daylight << (day.sunset - day.sunrise)
+        @apr_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 5
+        @may_sunrise << Time.at(day.sunrise).strftime('%H:%M')
+        @may_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @may_daylight << (day.sunset - day.sunrise)
+        @may_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 6
+        @jun_sunrise << Time.at(day.sunrise).strftime('%H:%M')
+        @jun_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @jun_daylight << (day.sunset - day.sunrise)
+        @jun_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 7
+        @jul_sunrise << Time.at(day.sunrise).strftime('%H:%M')
+        @jul_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @jul_daylight << (day.sunset - day.sunrise)
+        @jul_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 8
+        @aug_sunrise << Time.at(day.sunrise).strftime('%H:%M')
+        @aug_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @aug_daylight << (day.sunset - day.sunrise)
+        @aug_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 9
+        @sep_sunrise << Time.at(day.sunrise).strftime('%H:%M')
+        @sep_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @sep_daylight << (day.sunset - day.sunrise)
+        @sep_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 10
+        @oct_sunrise << Time.at(day.sunrise).strftime('%H:%M')
+        @oct_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @oct_daylight << (day.sunset - day.sunrise)
+        @oct_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 11
+        @nov_sunrise << Time.at(day.sunrise).strftime('%H:%M')
+        @nov_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @nov_daylight << (day.sunset - day.sunrise)
+        @nov_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 12
+        @dec_sunrise << Time.at(day.sunrise).strftime('%H:%M')
+        @dec_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @dec_daylight << (day.sunset - day.sunrise)
+        @dec_darkness << (86400 - (day.sunset - day.sunrise))
       end
     end
 
     @monthly_sunrise =
     [
-      january_sunrise: "#{(@jan_sunrise_hour.reduce(:+)/@jan_sunrise_hour.length).round}:#{(@jan_sunrise_minute.reduce(:+)/@jan_sunrise_minute.length).round}"
-      # february_sunrise: @feb_sunrise.reduce(:+)/@feb_sunrise.length,
-      # march_sunrise: @mar_sunrise.reduce(:+)/@mar_sunrise.length,
-      # april_sunrise: @apr_sunrise.reduce(:+)/@apr_sunrise.length,
-      # may_sunrise: @may_sunrise.reduce(:+)/@may_sunrise.length,
-      # june_sunrise: @jun_sunrise.reduce(:+)/@jun_sunrise.length,
-      # july_sunrise: @jul_sunrise.reduce(:+)/@jul_sunrise.length,
-      # august_sunrise: @aug_sunrise.reduce(:+)/@aug_sunrise.length,
-      # september_sunrise: @sep_sunrise.reduce(:+)/@sep_sunrise.length,
-      # october_sunrise: @oct_sunrise.reduce(:+)/@oct_sunrise.length,
-      # november_sunrise: @nov_sunrise.reduce(:+)/@nov_sunrise.length,
-      # december_sunrise: @dec_sunrise.reduce(:+)/@dec_sunrise.length
+      january_sunrise: avg_of_times(@jan_sunrise),
+      february_sunrise: avg_of_times(@feb_sunrise),
+      march_sunrise: avg_of_times(@mar_sunrise),
+      april_sunrise: avg_of_times(@apr_sunrise),
+      may_sunrise: avg_of_times(@may_sunrise),
+      june_sunrise: avg_of_times(@jun_sunrise),
+      july_sunrise: avg_of_times(@jul_sunrise),
+      august_sunrise: avg_of_times(@aug_sunrise),
+      september_sunrise: avg_of_times(@sep_sunrise),
+      october_sunrise: avg_of_times(@oct_sunrise),
+      november_sunrise: avg_of_times(@nov_sunrise),
+      december_sunrise: avg_of_times(@dec_sunrise)
     ]
     @monthly_sunset =
     [
-      january_sunset: "#{(@jan_sunset_hour.reduce(:+)/@jan_sunset_hour.length).round}:#{(@jan_sunset_minute.reduce(:+)/@jan_sunset_minute.length).round}"
-      # february_sunset: @feb_sunset.reduce(:+)/@feb_sunset.length,
-      # march_sunset: @mar_sunset.reduce(:+)/@mar_sunset.length,
-      # april_sunset: @apr_sunset.reduce(:+)/@apr_sunset.length,
-      # may_sunset: @may_sunset.reduce(:+)/@may_sunset.length,
-      # june_sunset: @jun_sunset.reduce(:+)/@jun_sunset.length,
-      # july_sunset: @jul_sunset.reduce(:+)/@jul_sunset.length,
-      # august_sunset: @aug_sunset.reduce(:+)/@aug_sunset.length,
-      # september_sunset: @sep_sunset.reduce(:+)/@sep_sunset.length,
-      # october_sunset: @oct_sunset.reduce(:+)/@oct_sunset.length,
-      # november_sunset: @nov_sunset.reduce(:+)/@nov_sunset.length,
-      # december_sunset: @dec_sunset.reduce(:+)/@dec_sunset.length
+      january_sunset: avg_of_times(@jan_sunset),
+      february_sunset: avg_of_times(@feb_sunset),
+      march_sunset: avg_of_times(@mar_sunset),
+      april_sunset: avg_of_times(@apr_sunset),
+      may_sunset: avg_of_times(@may_sunset),
+      june_sunset: avg_of_times(@jun_sunset),
+      july_sunset: avg_of_times(@jul_sunset),
+      august_sunset: avg_of_times(@aug_sunset),
+      september_sunset: avg_of_times(@sep_sunset),
+      october_sunset: avg_of_times(@oct_sunset),
+      november_sunset: avg_of_times(@nov_sunset),
+      december_sunset: avg_of_times(@dec_sunset)
     ]
     @monthly_daylight =
     [
       january_daylight: @jan_daylight.reduce(:+)/@jan_daylight.length
-      # february_daylight: @feb_daylight.reduce(:+)/@feb_daylight.length,
-      # march_daylight: @mar_daylight.reduce(:+)/@mar_daylight.length,
-      # april_daylight: @apr_daylight.reduce(:+)/@apr_daylight.length,
-      # may_daylight: @may_daylight.reduce(:+)/@may_daylight.length,
-      # june_daylight: @jun_daylight.reduce(:+)/@jun_daylight.length,
-      # july_daylight: @jul_daylight.reduce(:+)/@jul_daylight.length,
-      # august_daylight: @aug_daylight.reduce(:+)/@aug_daylight.length,
-      # september_daylight: @sep_daylight.reduce(:+)/@sep_daylight.length,
-      # october_daylight: @oct_daylight.reduce(:+)/@oct_daylight.length,
-      # november_daylight: @nov_daylight.reduce(:+)/@nov_daylight.length,
-      # december_daylight: @dec_daylight.reduce(:+)/@dec_daylight.length
+      february_daylight: @feb_daylight.reduce(:+)/@feb_daylight.length,
+      march_daylight: @mar_daylight.reduce(:+)/@mar_daylight.length,
+      april_daylight: @apr_daylight.reduce(:+)/@apr_daylight.length,
+      may_daylight: @may_daylight.reduce(:+)/@may_daylight.length,
+      june_daylight: @jun_daylight.reduce(:+)/@jun_daylight.length,
+      july_daylight: @jul_daylight.reduce(:+)/@jul_daylight.length,
+      august_daylight: @aug_daylight.reduce(:+)/@aug_daylight.length,
+      september_daylight: @sep_daylight.reduce(:+)/@sep_daylight.length,
+      october_daylight: @oct_daylight.reduce(:+)/@oct_daylight.length,
+      november_daylight: @nov_daylight.reduce(:+)/@nov_daylight.length,
+      december_daylight: @dec_daylight.reduce(:+)/@dec_daylight.length
     ]
     @monthly_darkness =
     [
       january_darkness: @jan_darkness.reduce(:+)/@jan_darkness.length
-      # february_darkness: @feb_darkness.reduce(:+)/@feb_darkness.length,
-      # march_darkness: @mar_darkness.reduce(:+)/@mar_darkness.length,
-      # april_darkness: @apr_darkness.reduce(:+)/@apr_darkness.length,
-      # may_darkness: @may_darkness.reduce(:+)/@may_darkness.length,
-      # june_darkness: @jun_darkness.reduce(:+)/@jun_darkness.length,
-      # july_darkness: @jul_darkness.reduce(:+)/@jul_darkness.length,
-      # august_darkness: @aug_darkness.reduce(:+)/@aug_darkness.length,
-      # september_darkness: @sep_darkness.reduce(:+)/@sep_darkness.length,
-      # october_darkness: @oct_darkness.reduce(:+)/@oct_darkness.length,
-      # november_darkness: @nov_darkness.reduce(:+)/@nov_darkness.length,
-      # december_darkness: @dec_darkness.reduce(:+)/@dec_darkness.length
+      february_darkness: @feb_darkness.reduce(:+)/@feb_darkness.length,
+      march_darkness: @mar_darkness.reduce(:+)/@mar_darkness.length,
+      april_darkness: @apr_darkness.reduce(:+)/@apr_darkness.length,
+      may_darkness: @may_darkness.reduce(:+)/@may_darkness.length,
+      june_darkness: @jun_darkness.reduce(:+)/@jun_darkness.length,
+      july_darkness: @jul_darkness.reduce(:+)/@jul_darkness.length,
+      august_darkness: @aug_darkness.reduce(:+)/@aug_darkness.length,
+      september_darkness: @sep_darkness.reduce(:+)/@sep_darkness.length,
+      october_darkness: @oct_darkness.reduce(:+)/@oct_darkness.length,
+      november_darkness: @nov_darkness.reduce(:+)/@nov_darkness.length,
+      december_darkness: @dec_darkness.reduce(:+)/@dec_darkness.length
     ]
 
     render json:
@@ -856,15 +854,14 @@ class WeatherDayController < ApplicationController
       }
   end
 
+  private
+  def avg_of_times(array_of_time)
+    size = array_of_time.length
+    avg_minutes = array_of_time.map do |x|
+      hour, minute = x.split(':')
+      total_minutes = hour.to_i * 60 + minute.to_i
+    end.reduce(:+)/size
+    "#{avg_minutes/60}: #{avg_minutes%60}"
+  end
+
 end
-
-
-# def avg_of_times(array_of_time)
-#   size = array_of_time.length
-#   avg_minutes = array_of_time.map do |x|
-#     hour, minute = x.split(':')
-#     total_minutes = hour.to_i * 60 + minute.to_i
-#   end
-#   .reduce(:+)/size
-#   "#{avg_minutes/60}: #{avg_minutes%60}"
-# end
