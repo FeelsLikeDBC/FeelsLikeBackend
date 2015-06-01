@@ -645,8 +645,8 @@ class WeatherDayController < ApplicationController
     {
       monthly_sunrise: @monthly_sunrise,
       monthly_sunset: @monthly_sunset,
-      monthly_daylight: @monthly_daylight,
-      monthly_darkness: @monthly_darkness
+      monthly_daylight_hours: @monthly_daylight,
+      monthly_darkness_hours: @monthly_darkness
     }
 
   end
