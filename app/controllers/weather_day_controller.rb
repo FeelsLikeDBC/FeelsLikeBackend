@@ -614,7 +614,7 @@ class WeatherDayController < ApplicationController
     ]
     @monthly_daylight =
     [
-      january_daylight: @jan_daylight.reduce(:+)/@jan_daylight.length
+      january_daylight: @jan_daylight.reduce(:+)/@jan_daylight.length,
       february_daylight: @feb_daylight.reduce(:+)/@feb_daylight.length,
       march_daylight: @mar_daylight.reduce(:+)/@mar_daylight.length,
       april_daylight: @apr_daylight.reduce(:+)/@apr_daylight.length,
@@ -629,7 +629,7 @@ class WeatherDayController < ApplicationController
     ]
     @monthly_darkness =
     [
-      january_darkness: @jan_darkness.reduce(:+)/@jan_darkness.length
+      january_darkness: @jan_darkness.reduce(:+)/@jan_darkness.length,
       february_darkness: @feb_darkness.reduce(:+)/@feb_darkness.length,
       march_darkness: @mar_darkness.reduce(:+)/@mar_darkness.length,
       april_darkness: @apr_darkness.reduce(:+)/@apr_darkness.length,
