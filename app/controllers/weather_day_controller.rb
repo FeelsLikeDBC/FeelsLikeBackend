@@ -146,10 +146,10 @@ class WeatherDayController < ApplicationController
     }
     @february =
     {
-      feb_avg_feels_like_day: @feb_avg_day.reduce(:+)/@feb_avg_day.length,
-      feb_avg_feels_like_night: @feb_avg_night.reduce(:+)/@feb_avg_night.length,
-      feb_feels_like_high: @feb_high.reduce(:+)/@feb_high.length,
-      feb_feels_like_low: @feb_low.reduce(:+)/@feb_low.length
+      # feb_avg_feels_like_day: @feb_avg_day.reduce(:+)/@feb_avg_day.length,
+      # feb_avg_feels_like_night: @feb_avg_night.reduce(:+)/@feb_avg_night.length,
+      # feb_feels_like_high: @feb_high.reduce(:+)/@feb_high.length,
+      # feb_feels_like_low: @feb_low.reduce(:+)/@feb_low.length
     }
     @march =
     {
