@@ -2,7 +2,7 @@ class WeatherDayController < ApplicationController
 
   def feels_like
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,
@@ -24,7 +24,7 @@ class WeatherDayController < ApplicationController
 
   def feels_like_monthly
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,
@@ -50,7 +50,7 @@ class WeatherDayController < ApplicationController
 
   def feels_like_yearly
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,
@@ -76,7 +76,7 @@ class WeatherDayController < ApplicationController
 
   def actual_temp
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,
@@ -97,7 +97,7 @@ class WeatherDayController < ApplicationController
 
   def actual_temp_monthly
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,
@@ -122,7 +122,7 @@ class WeatherDayController < ApplicationController
 
   def actual_temp_yearly
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,
@@ -147,7 +147,7 @@ class WeatherDayController < ApplicationController
 
   def rise_set
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,
@@ -169,7 +169,7 @@ class WeatherDayController < ApplicationController
 
   def rise_set_monthly
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,
@@ -195,7 +195,7 @@ class WeatherDayController < ApplicationController
 
   def rise_set_yearly
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,
@@ -221,7 +221,7 @@ class WeatherDayController < ApplicationController
 
   def rain_snow
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,
@@ -243,7 +243,7 @@ class WeatherDayController < ApplicationController
 
   def rain_snow_monthly
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,
@@ -269,7 +269,7 @@ class WeatherDayController < ApplicationController
 
   def rain_snow_yearly
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,
@@ -295,7 +295,7 @@ class WeatherDayController < ApplicationController
 
   def everything_else
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,
@@ -319,7 +319,7 @@ class WeatherDayController < ApplicationController
 
   def everything_else_monthly
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,
@@ -347,7 +347,7 @@ class WeatherDayController < ApplicationController
 
   def everything_else_yearly
     @city = City.find(params[:id])
-    @weather = @city.weather_days.map do |day|
+    @weather = @city.weather_days.order(:date).map do |day|
       {
         city: day.city_id,
         date: day.date,

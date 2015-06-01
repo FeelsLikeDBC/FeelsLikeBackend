@@ -175,6 +175,6 @@ class DB_SEEDER
   end
 end
 
-# DB_SEEDER.pull_city_data(City.second,DateTime.new(2012,5,1,0,0,0, City.second.offset))
+# DB_SEEDER.pull_city_data(City.third,DateTime.new(2012,6,7,0,0,0, City.third.offset))
 
 
