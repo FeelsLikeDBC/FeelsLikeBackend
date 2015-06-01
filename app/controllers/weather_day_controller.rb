@@ -202,8 +202,6 @@ class WeatherDayController < ApplicationController
       dec_feels_like_low: @dec_low.reduce(:+)/@dec_low.length
     ]
 
-
-
     render json:
     {
       monthly_average_feels_like_day: @monthly_average_feels_like_day,
@@ -212,7 +210,6 @@ class WeatherDayController < ApplicationController
       monthly_feels_like_low: @monthly_feels_like_low
     }
   end
-
 
   def feels_like_monthly
     @city = City.find(params[:id])
@@ -585,19 +582,73 @@ class WeatherDayController < ApplicationController
 
     @monthly_sunrise =
     [
-      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
-      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
-      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
-      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
-      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
-      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
-      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
-      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
-      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
-      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
-      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
-      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length
+      january_sunrise: @jan_sunrise.reduce(:+)/@jan_sunrise.length,
+      february_sunrise: @feb_sunrise.reduce(:+)/@feb_sunrise.length,
+      march_sunrise: @mar_sunrise.reduce(:+)/@mar_sunrise.length,
+      april_sunrise: @apr_sunrise.reduce(:+)/@apr_sunrise.length,
+      may_sunrise: @may_sunrise.reduce(:+)/@may_sunrise.length,
+      june_sunrise: @jun_sunrise.reduce(:+)/@jun_sunrise.length,
+      july_sunrise: @jul_sunrise.reduce(:+)/@jul_sunrise.length,
+      august_sunrise: @aug_sunrise.reduce(:+)/@aug_sunrise.length,
+      september_sunrise: @sep_sunrise.reduce(:+)/@sep_sunrise.length,
+      october_sunrise: @oct_sunrise.reduce(:+)/@oct_sunrise.length,
+      november_sunrise: @nov_sunrise.reduce(:+)/@nov_sunrise.length,
+      december_sunrise: @dec_sunrise.reduce(:+)/@dec_sunrise.length
     ]
+    @monthly_sunset =
+    [
+      january_sunset: @jan_sunset.reduce(:+)/@jan_sunset.length,
+      february_sunset: @feb_sunset.reduce(:+)/@feb_sunset.length,
+      march_sunset: @mar_sunset.reduce(:+)/@mar_sunset.length,
+      april_sunset: @apr_sunset.reduce(:+)/@apr_sunset.length,
+      may_sunset: @may_sunset.reduce(:+)/@may_sunset.length,
+      june_sunset: @jun_sunset.reduce(:+)/@jun_sunset.length,
+      july_sunset: @jul_sunset.reduce(:+)/@jul_sunset.length,
+      august_sunset: @aug_sunset.reduce(:+)/@aug_sunset.length,
+      september_sunset: @sep_sunset.reduce(:+)/@sep_sunset.length,
+      october_sunset: @oct_sunset.reduce(:+)/@oct_sunset.length,
+      november_sunset: @nov_sunset.reduce(:+)/@nov_sunset.length,
+      december_sunset: @dec_sunset.reduce(:+)/@dec_sunset.length
+    ]
+    @monthly_daylight =
+    [
+      january_daylight: @jan_daylight.reduce(:+)/@jan_daylight.length,
+      february_daylight: @feb_daylight.reduce(:+)/@feb_daylight.length,
+      march_daylight: @mar_daylight.reduce(:+)/@mar_daylight.length,
+      april_daylight: @apr_daylight.reduce(:+)/@apr_daylight.length,
+      may_daylight: @may_daylight.reduce(:+)/@may_daylight.length,
+      june_daylight: @jun_daylight.reduce(:+)/@jun_daylight.length,
+      july_daylight: @jul_daylight.reduce(:+)/@jul_daylight.length,
+      august_daylight: @aug_daylight.reduce(:+)/@aug_daylight.length,
+      september_daylight: @sep_daylight.reduce(:+)/@sep_daylight.length,
+      october_daylight: @oct_daylight.reduce(:+)/@oct_daylight.length,
+      november_daylight: @nov_daylight.reduce(:+)/@nov_daylight.length,
+      december_daylight: @dec_daylight.reduce(:+)/@dec_daylight.length
+    ]
+    @monthly_darkness =
+    [
+      january_darkness: @jan_darkness.reduce(:+)/@jan_darkness.length,
+      february_darkness: @feb_darkness.reduce(:+)/@feb_darkness.length,
+      march_darkness: @mar_darkness.reduce(:+)/@mar_darkness.length,
+      april_darkness: @apr_darkness.reduce(:+)/@apr_darkness.length,
+      may_darkness: @may_darkness.reduce(:+)/@may_darkness.length,
+      june_darkness: @jun_darkness.reduce(:+)/@jun_darkness.length,
+      july_darkness: @jul_darkness.reduce(:+)/@jul_darkness.length,
+      august_darkness: @aug_darkness.reduce(:+)/@aug_darkness.length,
+      september_darkness: @sep_darkness.reduce(:+)/@sep_darkness.length,
+      october_darkness: @oct_darkness.reduce(:+)/@oct_darkness.length,
+      november_darkness: @nov_darkness.reduce(:+)/@nov_darkness.length,
+      december_darkness: @dec_darkness.reduce(:+)/@dec_darkness.length
+    ]
+
+    render json:
+    {
+      monthly_sunrise: @monthly_sunrise,
+      monthly_sunset: @monthly_sunset,
+      monthly_daylight: @monthly_daylight,
+      monthly_darkness: @monthly_darkness
+    }
+
   end
 
 
