@@ -78,7 +78,7 @@ class DB_SEEDER
 
     def wu_args(date,city)
       {
-        api: ENV['WUAPI_KEY2'],
+        api: ENV['WUAPI_KEY3'],
         year: date.strftime('%Y'), # Year as string for WU
         month: date.strftime('%m'), # Month as string for WU
         day: date.strftime('%d'), # Day as string for WU
