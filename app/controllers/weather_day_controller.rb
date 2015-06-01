@@ -138,7 +138,7 @@ class WeatherDayController < ApplicationController
       end
     end
 
-    @average_feels_like_day =
+    @monthly_average_feels_like_day =
     [
       jan_avg_feels_like_day: @jan_avg_day.reduce(:+)/@jan_avg_day.length,
       feb_avg_feels_like_day: @feb_avg_day.reduce(:+)/@feb_avg_day.length,
@@ -154,7 +154,7 @@ class WeatherDayController < ApplicationController
       dec_avg_feels_like_day: @dec_avg_day.reduce(:+)/@dec_avg_day.length
     ]
 
-    @average_feels_like_night =
+    @monthly_average_feels_like_night =
     [
       jan_avg_feels_like_night: @jan_avg_night.reduce(:+)/@jan_avg_night.length,
       feb_avg_feels_like_night: @feb_avg_night.reduce(:+)/@feb_avg_night.length,
@@ -170,7 +170,7 @@ class WeatherDayController < ApplicationController
       dec_avg_feels_like_night: @dec_avg_night.reduce(:+)/@dec_avg_night.length
     ]
 
-    @feels_like_high =
+    @montly_feels_like_high =
     [
       jan_feels_like_high: @jan_high.reduce(:+)/@jan_high.length,
       feb_feels_like_high: @feb_high.reduce(:+)/@feb_high.length,
@@ -186,7 +186,7 @@ class WeatherDayController < ApplicationController
       dec_feels_like_high: @dec_high.reduce(:+)/@dec_high.length
     ]
 
-    @feels_like_low =
+    @monthly_feels_like_low =
     [
       jan_feels_like_low: @jan_low.reduce(:+)/@jan_low.length,
       feb_feels_like_low: @feb_low.reduce(:+)/@feb_low.length,
@@ -206,10 +206,10 @@ class WeatherDayController < ApplicationController
 
     render json:
     {
-      average_feels_like_day: @average_feels_like_day,
-      average_feels_like_night: @average_feels_like_night,
-      feels_like_high: @feels_like_high,
-      feels_like_low: @feels_like_low
+      monthly_average_feels_like_day: @average_feels_like_day,
+      monthly_average_feels_like_night: @average_feels_like_night,
+      monthly_feels_like_high: @feels_like_high,
+      monthly_feels_like_low: @feels_like_low
     }
   end
 
@@ -301,57 +301,50 @@ class WeatherDayController < ApplicationController
         @_2015_low << day.low_apparent_temp
       end
     end
-    @_2010 =
-    {
+    @yearly_average_feels_like_day =
+    [
       _2010_avg_feels_like_day: @_2010_avg_day.reduce(:+)/@_2010_avg_day.length,
-      _2010_avg_feels_like_night: @_2010_avg_night.reduce(:+)/@_2010_avg_night.length,
-      _2010_feels_like_high: @_2010_high.reduce(:+)/@_2010_high.length,
-      _2010_feels_like_low: @_2010_low.reduce(:+)/@_2010_low.length
-    }
-    @_2011 =
-    {
       _2011_avg_feels_like_day: @_2011_avg_day.reduce(:+)/@_2011_avg_day.length,
-      _2011_avg_feels_like_night: @_2011_avg_night.reduce(:+)/@_2011_avg_night.length,
-      _2011_feels_like_high: @_2011_high.reduce(:+)/@_2011_high.length,
-      _2011_feels_like_low: @_2011_low.reduce(:+)/@_2011_low.length
-    }
-    @_2012 =
-    {
       _2012_avg_feels_like_day: @_2012_avg_day.reduce(:+)/@_2012_avg_day.length,
-      _2012_avg_feels_like_night: @_2012_avg_night.reduce(:+)/@_2012_avg_night.length,
-      _2012_feels_like_high: @_2012_high.reduce(:+)/@_2012_high.length,
-      _2012_feels_like_low: @_2012_low.reduce(:+)/@_2012_low.length
-    }
-    @_2013 =
-    {
       _2013_avg_feels_like_day: @_2013_avg_day.reduce(:+)/@_2013_avg_day.length,
-      _2013_avg_feels_like_night: @_2013_avg_night.reduce(:+)/@_2013_avg_night.length,
-      _2013_feels_like_high: @_2013_high.reduce(:+)/@_2013_high.length,
-      _2013_feels_like_low: @_2013_low.reduce(:+)/@_2013_low.length
-    }
-    @_2014 =
-    {
       _2014_avg_feels_like_day: @_2014_avg_day.reduce(:+)/@_2014_avg_day.length,
+      _2015_avg_feels_like_day: @_2015_avg_day.reduce(:+)/@_2015_avg_day.length
+    ]
+
+    @yearly_average_feels_like_night =
+    [
+      _2010_avg_feels_like_night: @_2010_avg_night.reduce(:+)/@_2010_avg_night.length,
+      _2011_avg_feels_like_night: @_2011_avg_night.reduce(:+)/@_2011_avg_night.length,
+      _2012_avg_feels_like_night: @_2012_avg_night.reduce(:+)/@_2012_avg_night.length,
+      _2013_avg_feels_like_night: @_2013_avg_night.reduce(:+)/@_2013_avg_night.length,
       _2014_avg_feels_like_night: @_2014_avg_night.reduce(:+)/@_2014_avg_night.length,
+      _2015_avg_feels_like_night: @_2015_avg_night.reduce(:+)/@_2015_avg_night.length
+    ]
+    @yearly_feels_like_high =
+    [
+      _2010_feels_like_high: @_2010_high.reduce(:+)/@_2010_high.length,
+      _2011_feels_like_high: @_2011_high.reduce(:+)/@_2011_high.length,
+      _2012_feels_like_high: @_2012_high.reduce(:+)/@_2012_high.length,
+      _2013_feels_like_high: @_2013_high.reduce(:+)/@_2013_high.length,
       _2014_feels_like_high: @_2014_high.reduce(:+)/@_2014_high.length,
-      _2014_feels_like_low: @_2014_low.reduce(:+)/@_2014_low.length
-    }
-    @_2015 =
-    {
-      _2015_avg_feels_like_day: @_2015_avg_day.reduce(:+)/@_2015_avg_day.length,
-      _2015_avg_feels_like_night: @_2015_avg_night.reduce(:+)/@_2015_avg_night.length,
-      _2015_feels_like_high: @_2015_high.reduce(:+)/@_2015_high.length,
+      _2015_feels_like_high: @_2015_high.reduce(:+)/@_2015_high.length
+    ]
+    @yearly_feels_like_low =
+    [
+      _2010_feels_like_low: @_2010_low.reduce(:+)/@_2010_low.length,
+      _2011_feels_like_low: @_2011_low.reduce(:+)/@_2011_low.length,
+      _2012_feels_like_low: @_2012_low.reduce(:+)/@_2012_low.length,
+      _2013_feels_like_low: @_2013_low.reduce(:+)/@_2013_low.length,
+      _2014_feels_like_low: @_2014_low.reduce(:+)/@_2014_low.length,
       _2015_feels_like_low: @_2015_low.reduce(:+)/@_2015_low.length
-    }
+    ]
 
     render json:
     {
-      _2010: @_2010,
-      _2011: @_2011,
-      _2012: @_2012,
-      _2013: @_2013,
-      _2014: @_2014,
-      _2015: @_2015
+      yearly_average_feels_like_day: @yearly_average_feels_like_day,
+      yearly_average_feels_like_night: @yearly_average_feels_like_night,
+      yearly_feels_like_high: @yearly_feels_like_high,
+      yearly_feels_like_low: @yearly_feels_like_low
     }
   end
 
