@@ -612,33 +612,33 @@ class WeatherDayController < ApplicationController
     ]
     @monthly_daylight =
     [
-      @jan_daylight.reduce(:+)/@jan_daylight.length,
-      @feb_daylight.reduce(:+)/@feb_daylight.length,
-      @mar_daylight.reduce(:+)/@mar_daylight.length,
-      @apr_daylight.reduce(:+)/@apr_daylight.length,
-      @may_daylight.reduce(:+)/@may_daylight.length,
-      @jun_daylight.reduce(:+)/@jun_daylight.length,
-      @jul_daylight.reduce(:+)/@jul_daylight.length,
-      @aug_daylight.reduce(:+)/@aug_daylight.length,
-      @sep_daylight.reduce(:+)/@sep_daylight.length,
-      @oct_daylight.reduce(:+)/@oct_daylight.length,
-      @nov_daylight.reduce(:+)/@nov_daylight.length,
-      @dec_daylight.reduce(:+)/@dec_daylight.length
+      (@jan_daylight.reduce(:+)/@jan_daylight.length).fdiv(3600),
+      (@feb_daylight.reduce(:+)/@feb_daylight.length).fdiv(3600),
+      (@mar_daylight.reduce(:+)/@mar_daylight.length).fdiv(3600),
+      (@apr_daylight.reduce(:+)/@apr_daylight.length).fdiv(3600),
+      (@may_daylight.reduce(:+)/@may_daylight.length).fdiv(3600),
+      (@jun_daylight.reduce(:+)/@jun_daylight.length).fdiv(3600),
+      (@jul_daylight.reduce(:+)/@jul_daylight.length).fdiv(3600),
+      (@aug_daylight.reduce(:+)/@aug_daylight.length).fdiv(3600),
+      (@sep_daylight.reduce(:+)/@sep_daylight.length).fdiv(3600),
+      (@oct_daylight.reduce(:+)/@oct_daylight.length).fdiv(3600),
+      (@nov_daylight.reduce(:+)/@nov_daylight.length).fdiv(3600),
+      (@dec_daylight.reduce(:+)/@dec_daylight.length).fdiv(3600)
     ]
     @monthly_darkness =
     [
-      @jan_darkness.reduce(:+)/@jan_darkness.length,
-      @feb_darkness.reduce(:+)/@feb_darkness.length,
-      @mar_darkness.reduce(:+)/@mar_darkness.length,
-      @apr_darkness.reduce(:+)/@apr_darkness.length,
-      @may_darkness.reduce(:+)/@may_darkness.length,
-      @jun_darkness.reduce(:+)/@jun_darkness.length,
-      @jul_darkness.reduce(:+)/@jul_darkness.length,
-      @aug_darkness.reduce(:+)/@aug_darkness.length,
-      @sep_darkness.reduce(:+)/@sep_darkness.length,
-      @oct_darkness.reduce(:+)/@oct_darkness.length,
-      @nov_darkness.reduce(:+)/@nov_darkness.length,
-      @dec_darkness.reduce(:+)/@dec_darkness.length
+      (@jan_darkness.reduce(:+)/@jan_darkness.length).fdiv(3600),
+      (@feb_darkness.reduce(:+)/@feb_darkness.length).fdiv(3600),
+      (@mar_darkness.reduce(:+)/@mar_darkness.length).fdiv(3600),
+      (@apr_darkness.reduce(:+)/@apr_darkness.length).fdiv(3600),
+      (@may_darkness.reduce(:+)/@may_darkness.length).fdiv(3600),
+      (@jun_darkness.reduce(:+)/@jun_darkness.length).fdiv(3600),
+      (@jul_darkness.reduce(:+)/@jul_darkness.length).fdiv(3600),
+      (@aug_darkness.reduce(:+)/@aug_darkness.length).fdiv(3600),
+      (@sep_darkness.reduce(:+)/@sep_darkness.length).fdiv(3600),
+      (@oct_darkness.reduce(:+)/@oct_darkness.length).fdiv(3600),
+      (@nov_darkness.reduce(:+)/@nov_darkness.length).fdiv(3600),
+      (@dec_darkness.reduce(:+)/@dec_darkness.length).fdiv(3600)
     ]
 
     render json:
