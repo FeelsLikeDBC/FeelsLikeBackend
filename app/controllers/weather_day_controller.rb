@@ -853,13 +853,20 @@ class WeatherDayController < ApplicationController
   end
 
   private
+
+  def sanitize_hour(hour_digit)
+    if hour_digit <= 0
+      hour_digit += 24
+    end
+  end
+
   def avg_of_times(array_of_time)
     size = array_of_time.length
     avg_minutes = array_of_time.map do |x|
       hour, minute = x.split(':')
       total_minutes = hour.to_i * 60 + minute.to_i
     end.reduce(:+)/size
-    hour_var = (avg_minutes/60).to_s
+    hour_var = sanitize_hour((avg_minutes/60) - (@city.offset.to_i)).to_s
     minute_var = (avg_minutes%60).to_s
     "#{hour_var.rjust(2, '0')}:#{minute_var.rjust(2, '0')}"
   end
