@@ -75,62 +75,62 @@ class WeatherDayController < ApplicationController
     @dec_low = []
 
     @city.weather_days.order(:date).each do |day|
-      if day.month = 1
+      if day.month == 1
         @jan_avg_day << day.avg_apparent_day_temp
         @jan_avg_night << day.avg_apparent_night_temp
         @jan_high << day.high_apparent_temp
         @jan_low << day.low_apparent_temp
-      elsif day.month = 2
+      elsif day.month == 2
         @feb_avg_day << day.avg_apparent_day_temp
         @feb_avg_night << day.avg_apparent_night_temp
         @feb_high << day.high_apparent_temp
         @feb_low << day.low_apparent_temp
-      elsif day.month = 3
+      elsif day.month == 3
         @mar_avg_day << day.avg_apparent_day_temp
         @mar_avg_night << day.avg_apparent_night_temp
         @mar_high << day.high_apparent_temp
         @mar_low << day.low_apparent_temp
-      elsif day.month = 4
+      elsif day.month == 4
         @apr_avg_day << day.avg_apparent_day_temp
         @apr_avg_night << day.avg_apparent_night_temp
         @apr_high << day.high_apparent_temp
         @apr_low << day.low_apparent_temp
-      elsif day.month = 5
+      elsif day.month == 5
         @may_avg_day << day.avg_apparent_day_temp
         @may_avg_night << day.avg_apparent_night_temp
         @may_high << day.high_apparent_temp
         @may_low << day.low_apparent_temp
-      elsif day.month = 6
+      elsif day.month == 6
         @jun_avg_day << day.avg_apparent_day_temp
         @jun_avg_night << day.avg_apparent_night_temp
         @jun_high << day.high_apparent_temp
         @jun_low << day.low_apparent_temp
-      elsif day.month = 7
+      elsif day.month == 7
         @jul_avg_day << day.avg_apparent_day_temp
         @jul_avg_night << day.avg_apparent_night_temp
         @jul_high << day.high_apparent_temp
         @jul_low << day.low_apparent_temp
-      elsif day.month = 8
+      elsif day.month == 8
         @aug_avg_day << day.avg_apparent_day_temp
         @aug_avg_night << day.avg_apparent_night_temp
         @aug_high << day.high_apparent_temp
         @aug_low << day.low_apparent_temp
-      elsif day.month = 9
+      elsif day.month == 9
         @sep_avg_day << day.avg_apparent_day_temp
         @sep_avg_night << day.avg_apparent_night_temp
         @sep_high << day.high_apparent_temp
         @sep_low << day.low_apparent_temp
-      elsif day.month = 10
+      elsif day.month == 10
         @oct_avg_day << day.avg_apparent_day_temp
         @oct_avg_night << day.avg_apparent_night_temp
         @oct_high << day.high_apparent_temp
         @oct_low << day.low_apparent_temp
-      elsif day.month = 11
+      elsif day.month == 11
         @nov_avg_day << day.avg_apparent_day_temp
         @nov_avg_night << day.avg_apparent_night_temp
         @nov_high << day.high_apparent_temp
         @nov_low << day.low_apparent_temp
-      elsif day.month = 12
+      elsif day.month == 12
         @dec_avg_day << day.avg_apparent_day_temp
         @dec_avg_night << day.avg_apparent_night_temp
         @dec_high << day.high_apparent_temp
@@ -146,10 +146,10 @@ class WeatherDayController < ApplicationController
     }
     @february =
     {
-      # feb_avg_feels_like_day: @feb_avg_day.reduce(:+)/@feb_avg_day.length,
-      # feb_avg_feels_like_night: @feb_avg_night.reduce(:+)/@feb_avg_night.length,
-      # feb_feels_like_high: @feb_high.reduce(:+)/@feb_high.length,
-      # feb_feels_like_low: @feb_low.reduce(:+)/@feb_low.length
+      feb_avg_feels_like_day: @feb_avg_day.reduce(:+)/@feb_avg_day.length,
+      feb_avg_feels_like_night: @feb_avg_night.reduce(:+)/@feb_avg_night.length,
+      feb_feels_like_high: @feb_high.reduce(:+)/@feb_high.length,
+      feb_feels_like_low: @feb_low.reduce(:+)/@feb_low.length
     }
     @march =
     {
