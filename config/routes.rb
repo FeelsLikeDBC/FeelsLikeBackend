@@ -32,7 +32,8 @@ Rails.application.routes.draw do
 
 # Everything Else
   match '/city/:id/everything_else' => "weather_day#everything_else", :via => [:get]
-  match '/city/:id/everything_else_monthly' => "weather_day#everything_else_monthly", :via => [:get]
+  match '/city/:id/everything_else_monthly' => "weather_day#everything_else_monthly_crushed", :via => [:get]
+  match '/city/:id/everything_else_monthly_crushed' => "weather_day#everything_else_monthly", :via => [:get]
   match '/city/:id/everything_else_yearly' => "weather_day#everything_else_yearly", :via => [:get]
 
 end

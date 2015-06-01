@@ -1030,6 +1030,236 @@ class WeatherDayController < ApplicationController
       }
   end
 
+  def everything_else_monthly_crushed
+    @city = City.find(params[:id])
+
+    @jan_cloud_cover = []
+    @jan_avg_dewpt = []
+    @jan_avg_wind_spd = []
+    @jan_avg_wind_dir = []
+    @jan_humidity = []
+    @feb_cloud_cover = []
+    @feb_avg_dewpt = []
+    @feb_avg_wind_spd = []
+    @feb_avg_wind_dir = []
+    @feb_humidity = []
+    @mar_cloud_cover = []
+    @mar_avg_dewpt = []
+    @mar_avg_wind_spd = []
+    @mar_avg_wind_dir = []
+    @mar_humidity = []
+    @apr_cloud_cover = []
+    @apr_avg_dewpt = []
+    @apr_avg_wind_spd = []
+    @apr_avg_wind_dir = []
+    @apr_humidity = []
+    @may_cloud_cover = []
+    @may_avg_dewpt = []
+    @may_avg_wind_spd = []
+    @may_avg_wind_dir = []
+    @may_humidity = []
+    @jun_cloud_cover = []
+    @jun_avg_dewpt = []
+    @jun_avg_wind_spd = []
+    @jun_avg_wind_dir = []
+    @jun_humidity = []
+    @jul_cloud_cover = []
+    @jul_avg_dewpt = []
+    @jul_avg_wind_spd = []
+    @jul_avg_wind_dir = []
+    @jul_humidity = []
+    @aug_cloud_cover = []
+    @aug_avg_dewpt = []
+    @aug_avg_wind_spd = []
+    @aug_avg_wind_dir = []
+    @aug_humidity = []
+    @sep_cloud_cover = []
+    @sep_avg_dewpt = []
+    @sep_avg_wind_spd = []
+    @sep_avg_wind_dir = []
+    @sep_humidity = []
+    @oct_cloud_cover = []
+    @oct_avg_dewpt = []
+    @oct_avg_wind_spd = []
+    @oct_avg_wind_dir = []
+    @oct_humidity = []
+    @nov_cloud_cover = []
+    @nov_avg_dewpt = []
+    @nov_avg_wind_spd = []
+    @nov_avg_wind_dir = []
+    @nov_humidity = []
+    @dec_cloud_cover = []
+    @dec_avg_dewpt = []
+    @dec_avg_wind_spd = []
+    @dec_avg_wind_dir = []
+    @dec_humidity = []
+
+    @city.weather_days.order(:date).each do |day|
+      if day.month == 1
+        @jan_cloud_cover << day.cloud_cover
+        @jan_avg_dewpt << day.avg_dewpt
+        @jan_avg_wind_spd << day.avg_wind_spd
+        @jan_avg_wind_dir << day.avg_wind_dir
+        @jan_humidity << day.humidity
+      elsif day.month == 2
+        @feb_cloud_cover << day.cloud_cover
+        @feb_avg_dewpt << day.avg_dewpt
+        @feb_avg_wind_spd << day.avg_wind_spd
+        @feb_avg_wind_dir << day.avg_wind_dir
+        @feb_humidity << day.humidity
+      elsif day.month == 3
+        @mar_cloud_cover << day.cloud_cover
+        @mar_avg_dewpt << day.avg_dewpt
+        @mar_avg_wind_spd << day.avg_wind_spd
+        @mar_avg_wind_dir << day.avg_wind_dir
+        @mar_humidity << day.humidity
+      elsif day.month == 4
+        @apr_cloud_cover << day.cloud_cover
+        @apr_avg_dewpt << day.avg_dewpt
+        @apr_avg_wind_spd << day.avg_wind_spd
+        @apr_avg_wind_dir << day.avg_wind_dir
+        @apr_humidity << day.humidity
+      elsif day.month == 5
+        @may_cloud_cover << day.cloud_cover
+        @may_avg_dewpt << day.avg_dewpt
+        @may_avg_wind_spd << day.avg_wind_spd
+        @may_avg_wind_dir << day.avg_wind_dir
+        @may_humidity << day.humidity
+      elsif day.month == 6
+        @jun_cloud_cover << day.cloud_cover
+        @jun_avg_dewpt << day.avg_dewpt
+        @jun_avg_wind_spd << day.avg_wind_spd
+        @jun_avg_wind_dir << day.avg_wind_dir
+        @jun_humidity << day.humidity
+      elsif day.month == 7
+        @jul_cloud_cover << day.cloud_cover
+        @jul_avg_dewpt << day.avg_dewpt
+        @jul_avg_wind_spd << day.avg_wind_spd
+        @jul_avg_wind_dir << day.avg_wind_dir
+        @jul_humidity << day.humidity
+      elsif day.month == 8
+        @aug_cloud_cover << day.cloud_cover
+        @aug_avg_dewpt << day.avg_dewpt
+        @aug_avg_wind_spd << day.avg_wind_spd
+        @aug_avg_wind_dir << day.avg_wind_dir
+        @aug_humidity << day.humidity
+      elsif day.month == 9
+        @sep_cloud_cover << day.cloud_cover
+        @sep_avg_dewpt << day.avg_dewpt
+        @sep_avg_wind_spd << day.avg_wind_spd
+        @sep_avg_wind_dir << day.avg_wind_dir
+        @sep_humidity << day.humidity
+      elsif day.month == 10
+        @oct_cloud_cover << day.cloud_cover
+        @oct_avg_dewpt << day.avg_dewpt
+        @oct_avg_wind_spd << day.avg_wind_spd
+        @oct_avg_wind_dir << day.avg_wind_dir
+        @oct_humidity << day.humidity
+      elsif day.month == 11
+        @nov_cloud_cover << day.cloud_cover
+        @nov_avg_dewpt << day.avg_dewpt
+        @nov_avg_wind_spd << day.avg_wind_spd
+        @nov_avg_wind_dir << day.avg_wind_dir
+        @nov_humidity << day.humidity
+      elsif day.month == 12
+        @dec_cloud_cover << day.cloud_cover
+        @dec_avg_dewpt << day.avg_dewpt
+        @dec_avg_wind_spd << day.avg_wind_spd
+        @dec_avg_wind_dir << day.avg_wind_dir
+        @dec_humidity << day.humidity
+      end
+    end
+
+    @monthly_cloud_cover =
+    [
+      (@jan_cloud_cover.reduce(:+)/@jan_cloud_cover.length).round(2),
+      (@feb_cloud_cover.reduce(:+)/@feb_cloud_cover.length).round(2),
+      (@mar_cloud_cover.reduce(:+)/@mar_cloud_cover.length).round(2),
+      (@apr_cloud_cover.reduce(:+)/@apr_cloud_cover.length).round(2),
+      (@may_cloud_cover.reduce(:+)/@may_cloud_cover.length).round(2),
+      (@jun_cloud_cover.reduce(:+)/@jun_cloud_cover.length).round(2),
+      (@jul_cloud_cover.reduce(:+)/@jul_cloud_cover.length).round(2),
+      (@aug_cloud_cover.reduce(:+)/@aug_cloud_cover.length).round(2),
+      (@sep_cloud_cover.reduce(:+)/@sep_cloud_cover.length).round(2),
+      (@oct_cloud_cover.reduce(:+)/@oct_cloud_cover.length).round(2),
+      (@nov_cloud_cover.reduce(:+)/@nov_cloud_cover.length).round(2),
+      (@dec_cloud_cover.reduce(:+)/@dec_cloud_cover.length).round(2)
+    ]
+
+    @monthly_average_dewpoint =
+    [
+      (@jan_avg_dewpt.reduce(:+)/@jan_avg_dewpt.length).round(2),
+      (@feb_avg_dewpt.reduce(:+)/@feb_avg_dewpt.length).round(2),
+      (@mar_avg_dewpt.reduce(:+)/@mar_avg_dewpt.length).round(2),
+      (@apr_avg_dewpt.reduce(:+)/@apr_avg_dewpt.length).round(2),
+      (@may_avg_dewpt.reduce(:+)/@may_avg_dewpt.length).round(2),
+      (@jun_avg_dewpt.reduce(:+)/@jun_avg_dewpt.length).round(2),
+      (@jul_avg_dewpt.reduce(:+)/@jul_avg_dewpt.length).round(2),
+      (@aug_avg_dewpt.reduce(:+)/@aug_avg_dewpt.length).round(2),
+      (@sep_avg_dewpt.reduce(:+)/@sep_avg_dewpt.length).round(2),
+      (@oct_avg_dewpt.reduce(:+)/@oct_avg_dewpt.length).round(2),
+      (@nov_avg_dewpt.reduce(:+)/@nov_avg_dewpt.length).round(2),
+      (@dec_avg_dewpt.reduce(:+)/@dec_avg_dewpt.length).round(2)
+    ]
+
+    @monthly_average_windspeed =
+    [
+      (@jan_avg_wind_spd.reduce(:+)/@jan_avg_wind_spd.length).round(2),
+      (@feb_avg_wind_spd.reduce(:+)/@feb_avg_wind_spd.length).round(2),
+      (@mar_avg_wind_spd.reduce(:+)/@mar_avg_wind_spd.length).round(2),
+      (@apr_avg_wind_spd.reduce(:+)/@apr_avg_wind_spd.length).round(2),
+      (@may_avg_wind_spd.reduce(:+)/@may_avg_wind_spd.length).round(2),
+      (@jun_avg_wind_spd.reduce(:+)/@jun_avg_wind_spd.length).round(2),
+      (@jul_avg_wind_spd.reduce(:+)/@jul_avg_wind_spd.length).round(2),
+      (@aug_avg_wind_spd.reduce(:+)/@aug_avg_wind_spd.length).round(2),
+      (@sep_avg_wind_spd.reduce(:+)/@sep_avg_wind_spd.length).round(2),
+      (@oct_avg_wind_spd.reduce(:+)/@oct_avg_wind_spd.length).round(2),
+      (@nov_avg_wind_spd.reduce(:+)/@nov_avg_wind_spd.length).round(2),
+      (@dec_avg_wind_spd.reduce(:+)/@dec_avg_wind_spd.length).round(2)
+    ]
+
+    @monthly_average_wind_direction =
+    [
+      (@jan_avg_wind_dir.reduce(:+)/@jan_avg_wind_dir.length).round(2),
+      (@feb_avg_wind_dir.reduce(:+)/@feb_avg_wind_dir.length).round(2),
+      (@mar_avg_wind_dir.reduce(:+)/@mar_avg_wind_dir.length).round(2),
+      (@apr_avg_wind_dir.reduce(:+)/@apr_avg_wind_dir.length).round(2),
+      (@may_avg_wind_dir.reduce(:+)/@may_avg_wind_dir.length).round(2),
+      (@jun_avg_wind_dir.reduce(:+)/@jun_avg_wind_dir.length).round(2),
+      (@jul_avg_wind_dir.reduce(:+)/@jul_avg_wind_dir.length).round(2),
+      (@aug_avg_wind_dir.reduce(:+)/@aug_avg_wind_dir.length).round(2),
+      (@sep_avg_wind_dir.reduce(:+)/@sep_avg_wind_dir.length).round(2),
+      (@oct_avg_wind_dir.reduce(:+)/@oct_avg_wind_dir.length).round(2),
+      (@nov_avg_wind_dir.reduce(:+)/@nov_avg_wind_dir.length).round(2),
+      (@dec_avg_wind_dir.reduce(:+)/@dec_avg_wind_dir.length).round(2)
+    ]
+
+    @monthly_humidity =
+    [
+      (@jan_humidity.reduce(:+)/@jan_humidity.length).round(2),
+      (@feb_humidity.reduce(:+)/@feb_humidity.length).round(2),
+      (@mar_humidity.reduce(:+)/@mar_humidity.length).round(2),
+      (@apr_humidity.reduce(:+)/@apr_humidity.length).round(2),
+      (@may_humidity.reduce(:+)/@may_humidity.length).round(2),
+      (@jun_humidity.reduce(:+)/@jun_humidity.length).round(2),
+      (@jul_humidity.reduce(:+)/@jul_humidity.length).round(2),
+      (@aug_humidity.reduce(:+)/@aug_humidity.length).round(2),
+      (@sep_humidity.reduce(:+)/@sep_humidity.length).round(2),
+      (@oct_humidity.reduce(:+)/@oct_humidity.length).round(2),
+      (@nov_humidity.reduce(:+)/@nov_humidity.length).round(2),
+      (@dec_humidity.reduce(:+)/@dec_humidity.length).round(2)
+    ]
+
+    render json:
+    {
+      monthly_cloud_cover: @monthly_cloud_cover,
+      monthly_average_dewpoint: @monthly_average_dewpoint,
+      monthly_average_windspeed: @monthly_average_windspeed,
+      monthly_average_wind_direction: @monthly_average_wind_direction,
+      monthly_humidity: @monthly_humidity
+    }
+  end
+
   def everything_else_monthly
     @city = City.find(params[:id])
     @weather = @city.weather_days.order(:date).map do |day|
