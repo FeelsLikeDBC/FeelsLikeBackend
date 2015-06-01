@@ -467,10 +467,8 @@ class WeatherDayController < ApplicationController
   def rise_set_monthly_crushed
     @city = City.find(params[:id])
 
-    @jan_sunrise_hour = []
-    @jan_sunrise_minute = []
-    @jan_sunset_hour = []
-    @jan_sunset_minute = []
+    @jan_sunrise = []
+    @jan_sunset = []
     @jan_daylight = []
     @jan_darkness = []
     @feb_sunrise = []
@@ -520,63 +518,63 @@ class WeatherDayController < ApplicationController
 
     @weather = @city.weather_days.order(:date).each do |day|
       if day.month == 1
-        @jan_sunrise << Time.at(day.sunrise).strftime('%H:%M')
-        @jan_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @jan_sunrise << Time.at(day.sunrise).strftime('%I:%M')
+        @jan_sunset << Time.at(day.sunset).strftime('%I:%M')
         @jan_daylight << (day.sunset - day.sunrise)
         @jan_darkness << (86400 - (day.sunset - day.sunrise))
       elsif day.month == 2
-        @feb_sunrise << Time.at(day.sunrise).strftime('%H:%M')
-        @feb_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @feb_sunrise << Time.at(day.sunrise).strftime('%I:%M')
+        @feb_sunset << Time.at(day.sunset).strftime('%I:%M')
         @feb_daylight << (day.sunset - day.sunrise)
         @feb_darkness << (86400 - (day.sunset - day.sunrise))
       elsif day.month == 3
-        @mar_sunrise << Time.at(day.sunrise).strftime('%H:%M')
-        @mar_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @mar_sunrise << Time.at(day.sunrise).strftime('%I:%M')
+        @mar_sunset << Time.at(day.sunset).strftime('%I:%M')
         @mar_daylight << (day.sunset - day.sunrise)
         @mar_darkness << (86400 - (day.sunset - day.sunrise))
       elsif day.month == 4
-        @apr_sunrise << Time.at(day.sunrise).strftime('%H:%M')
-        @apr_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @apr_sunrise << Time.at(day.sunrise).strftime('%I:%M')
+        @apr_sunset << Time.at(day.sunset).strftime('%I:%M')
         @apr_daylight << (day.sunset - day.sunrise)
         @apr_darkness << (86400 - (day.sunset - day.sunrise))
       elsif day.month == 5
-        @may_sunrise << Time.at(day.sunrise).strftime('%H:%M')
-        @may_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @may_sunrise << Time.at(day.sunrise).strftime('%I:%M')
+        @may_sunset << Time.at(day.sunset).strftime('%I:%M')
         @may_daylight << (day.sunset - day.sunrise)
         @may_darkness << (86400 - (day.sunset - day.sunrise))
       elsif day.month == 6
-        @jun_sunrise << Time.at(day.sunrise).strftime('%H:%M')
-        @jun_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @jun_sunrise << Time.at(day.sunrise).strftime('%I:%M')
+        @jun_sunset << Time.at(day.sunset).strftime('%I:%M')
         @jun_daylight << (day.sunset - day.sunrise)
         @jun_darkness << (86400 - (day.sunset - day.sunrise))
       elsif day.month == 7
-        @jul_sunrise << Time.at(day.sunrise).strftime('%H:%M')
-        @jul_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @jul_sunrise << Time.at(day.sunrise).strftime('%I:%M')
+        @jul_sunset << Time.at(day.sunset).strftime('%I:%M')
         @jul_daylight << (day.sunset - day.sunrise)
         @jul_darkness << (86400 - (day.sunset - day.sunrise))
       elsif day.month == 8
-        @aug_sunrise << Time.at(day.sunrise).strftime('%H:%M')
-        @aug_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @aug_sunrise << Time.at(day.sunrise).strftime('%I:%M')
+        @aug_sunset << Time.at(day.sunset).strftime('%I:%M')
         @aug_daylight << (day.sunset - day.sunrise)
         @aug_darkness << (86400 - (day.sunset - day.sunrise))
       elsif day.month == 9
-        @sep_sunrise << Time.at(day.sunrise).strftime('%H:%M')
-        @sep_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @sep_sunrise << Time.at(day.sunrise).strftime('%I:%M')
+        @sep_sunset << Time.at(day.sunset).strftime('%I:%M')
         @sep_daylight << (day.sunset - day.sunrise)
         @sep_darkness << (86400 - (day.sunset - day.sunrise))
       elsif day.month == 10
-        @oct_sunrise << Time.at(day.sunrise).strftime('%H:%M')
-        @oct_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @oct_sunrise << Time.at(day.sunrise).strftime('%I:%M')
+        @oct_sunset << Time.at(day.sunset).strftime('%I:%M')
         @oct_daylight << (day.sunset - day.sunrise)
         @oct_darkness << (86400 - (day.sunset - day.sunrise))
       elsif day.month == 11
-        @nov_sunrise << Time.at(day.sunrise).strftime('%H:%M')
-        @nov_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @nov_sunrise << Time.at(day.sunrise).strftime('%I:%M')
+        @nov_sunset << Time.at(day.sunset).strftime('%I:%M')
         @nov_daylight << (day.sunset - day.sunrise)
         @nov_darkness << (86400 - (day.sunset - day.sunrise))
       elsif day.month == 12
-        @dec_sunrise << Time.at(day.sunrise).strftime('%H:%M')
-        @dec_sunset << Time.at(day.sunset).strftime('%H:%M')
+        @dec_sunrise << Time.at(day.sunrise).strftime('%I:%M')
+        @dec_sunset << Time.at(day.sunset).strftime('%I:%M')
         @dec_daylight << (day.sunset - day.sunrise)
         @dec_darkness << (86400 - (day.sunset - day.sunrise))
       end
@@ -861,7 +859,7 @@ class WeatherDayController < ApplicationController
       hour, minute = x.split(':')
       total_minutes = hour.to_i * 60 + minute.to_i
     end.reduce(:+)/size
-    "#{avg_minutes/60}: #{avg_minutes%60}"
+    "#{avg_minutes/60}:#{avg_minutes%60}"
   end
 
 end
