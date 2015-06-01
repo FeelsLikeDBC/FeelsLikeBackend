@@ -417,6 +417,92 @@ class WeatherDayController < ApplicationController
       }
   end
 
+  def actual_yearly_crushed
+    @city = City.find(params[:id])
+
+    @_2010_avg = []
+    @_2010_high = []
+    @_2010_low = []
+    @_2011_avg = []
+    @_2011_high = []
+    @_2011_low = []
+    @_2012_avg = []
+    @_2012_high = []
+    @_2012_low = []
+    @_2013_avg = []
+    @_2013_high = []
+    @_2013_low = []
+    @_2014_avg = []
+    @_2014_high = []
+    @_2014_low = []
+    @_2015_avg = []
+    @_2015_high = []
+    @_2015_low = []
+
+    @city.weather_days.order(:date).each do |day|
+      if day.year == 2010
+        @_2010_avg << day.avg_temp
+        @_2010_high << day.high_temp
+        @_2010_low << day.low_temp
+      elsif day.year == 2011
+        @_2011_avg << day.avg_temp
+        @_2011_high << day.high_temp
+        @_2011_low << day.low_temp
+      elsif day.year == 2012
+        @_2012_avg << day.avg_temp
+        @_2012_high << day.high_temp
+        @_2012_low << day.low_temp
+      elsif day.year == 2013
+        @_2013_avg << day.avg_temp
+        @_2013_high << day.high_temp
+        @_2013_low << day.low_temp
+      elsif day.year == 2014
+        @_2014_avg << day.avg_temp
+        @_2014_high << day.high_temp
+        @_2014_low << day.low_temp
+      elsif day.year == 2015
+        @_2015_avg << day.avg_temp
+        @_2015_high << day.high_temp
+        @_2015_low << day.low_temp
+      end
+    end
+    @yearly_average =
+    [
+      _2010_avg: @_2010_avg.reduce(:+)/@_2010_avg.length,
+      _2011_avg: @_2011_avg.reduce(:+)/@_2011_avg.length,
+      _2012_avg: @_2012_avg.reduce(:+)/@_2012_avg.length,
+      _2013_avg: @_2013_avg.reduce(:+)/@_2013_avg.length,
+      _2014_avg: @_2014_avg.reduce(:+)/@_2014_avg.length,
+      _2015_avg: @_2015_avg.reduce(:+)/@_2015_avg.length
+    ]
+
+    @yearly_high =
+    [
+      _2010_high: @_2010_high.reduce(:+)/@_2010_high.length,
+      _2011_high: @_2011_high.reduce(:+)/@_2011_high.length,
+      _2012_high: @_2012_high.reduce(:+)/@_2012_high.length,
+      _2013_high: @_2013_high.reduce(:+)/@_2013_high.length,
+      _2014_high: @_2014_high.reduce(:+)/@_2014_high.length,
+      _2015_high: @_2015_high.reduce(:+)/@_2015_high.length
+    ]
+    @yearly_feels_like_low =
+    [
+      _2010_low: @_2010_low.reduce(:+)/@_2010_low.length,
+      _2011_low: @_2011_low.reduce(:+)/@_2011_low.length,
+      _2012_low: @_2012_low.reduce(:+)/@_2012_low.length,
+      _2013_low: @_2013_low.reduce(:+)/@_2013_low.length,
+      _2014_low: @_2014_low.reduce(:+)/@_2014_low.length,
+      _2015_low: @_2015_low.reduce(:+)/@_2015_low.length
+    ]
+
+    render json:
+    {
+      yearly_average: @yearly_average,
+      yearly_high: @yearly_high,
+      yearly_low: @yearly_low
+    }
+  end
+
   def actual_temp_yearly
     @city = City.find(params[:id])
     @weather = @city.weather_days.order(:date).map do |day|
