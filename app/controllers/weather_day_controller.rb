@@ -187,7 +187,7 @@ class WeatherDayController < ApplicationController
     @dec_low = @dec_low.reduce(:+)/@dec_low.length
 
     render json:
-      {
+    {
       january_avg_feels_like_day: @jan_avg_day,
       january_avg_feels_like_night: @jan_avg_night,
       january_feels_like_high: @jan_high,
@@ -236,7 +236,9 @@ class WeatherDayController < ApplicationController
       december_avg_feels_like_night: @dec_avg_night,
       december_feels_like_high: @dec_high,
       december_feels_like_low: @dec_low
-      }
+    }
+  end
+
 
   def feels_like_monthly
     @city = City.find(params[:id])
