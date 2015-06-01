@@ -78,7 +78,7 @@ class DB_SEEDER
 
     def wu_args(date,city)
       {
-        api: ENV['WUAPI_KEY3'],
+        api: ENV['WUAPI_KEY4'],
         year: date.strftime('%Y'), # Year as string for WU
         month: date.strftime('%m'), # Month as string for WU
         day: date.strftime('%d'), # Day as string for WU
@@ -89,7 +89,7 @@ class DB_SEEDER
 
     def fk_args(date,city)
       {
-        api: ENV['FORECAST_KEY2'],
+        api: ENV['FORECAST_KEY3'],
         lat: city.lat.to_s,
         lng: city.lng.to_s,
         time: date.strftime('%s').to_i # UNIX time for Forecast.io
@@ -127,10 +127,10 @@ class DB_SEEDER
         sunrise: fk.body['daily']['data'][0]['sunriseTime'], #
         sunset: fk.body['daily']['data'][0]['sunsetTime'], #
         cloud_cover: fk.body['daily']['data'][0]['cloudCover'],
-        rain: wu.body['history']['dailysummary'][0]['rain'], #
-        precipitation: wu.body['history']['dailysummary'][0]['precipi'], #
-        snow: wu.body['history']['dailysummary'][0]['snow'], #
-        snowfall: wu.body['history']['dailysummary'][0]['snowfalli'], #
+        rain: wu.body['history']['dailysummary'][0]['rain'],
+        precipitation: wu.body['history']['dailysummary'][0]['precipi'],
+        snow: wu.body['history']['dailysummary'][0]['snow'],
+        snowfall: wu.body['history']['dailysummary'][0]['snowfalli'],
         avg_temp: wu.body['history']['dailysummary'][0]['meantempi'], #
         high_temp: wu.body['history']['dailysummary'][0]['maxtempi'], #
         low_temp: wu.body['history']['dailysummary'][0]['mintempi'], #
@@ -138,10 +138,10 @@ class DB_SEEDER
         avg_wind_spd: wu.body['history']['dailysummary'][0]['meanwindspdi'],
         avg_wind_dir: wu.body['history']['dailysummary'][0]['meanwdird'],
         humidity: wu.body['history']['dailysummary'][0]['humidity'],
-        high_apparent_temp: fk.body['daily']['data'][0]['apparentTemperatureMax'], #
-        low_apparent_temp: fk.body['daily']['data'][0]['apparentTemperatureMin'], #
-        avg_apparent_day_temp: avg_apparent_day_temp.to_f, #
-        avg_apparent_night_temp: avg_apparent_night_temp.to_f #
+        high_apparent_temp: fk.body['daily']['data'][0]['apparentTemperatureMax'],
+        low_apparent_temp: fk.body['daily']['data'][0]['apparentTemperatureMin'],
+        avg_apparent_day_temp: avg_apparent_day_temp.to_f,
+        avg_apparent_night_temp: avg_apparent_night_temp.to_f
       )
     end
 
@@ -175,6 +175,6 @@ class DB_SEEDER
   end
 end
 
-# DB_SEEDER.pull_city_data(City.fourth,DateTime.new(2010,5,1,0,0,0, City.fourth.offset))
+# DB_SEEDER.pull_city_data(City.fifth,DateTime.new(2010,5,1,0,0,0, City.fifth.offset))
 
 
