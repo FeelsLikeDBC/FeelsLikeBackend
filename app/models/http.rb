@@ -78,7 +78,7 @@ class DB_SEEDER
 
     def wu_args(date,city)
       {
-        api: ENV['WUAPI_KEY1'],
+        api: ENV['WUAPI_KEY2'],
         year: date.strftime('%Y'), # Year as string for WU
         month: date.strftime('%m'), # Month as string for WU
         day: date.strftime('%d'), # Day as string for WU
@@ -89,7 +89,7 @@ class DB_SEEDER
 
     def fk_args(date,city)
       {
-        api: ENV['FORECAST_KEY1'],
+        api: ENV['FORECAST_KEY2'],
         lat: city.lat.to_s,
         lng: city.lng.to_s,
         time: date.strftime('%s').to_i # UNIX time for Forecast.io
@@ -175,6 +175,6 @@ class DB_SEEDER
   end
 end
 
-# DB_SEEDER.pull_city_data(City.third,DateTime.new(2012,6,7,0,0,0, City.third.offset))
+# DB_SEEDER.pull_city_data(City.fourth,DateTime.new(2010,5,1,0,0,0, City.fourth.offset))
 
 
