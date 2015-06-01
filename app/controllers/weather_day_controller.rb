@@ -857,6 +857,8 @@ class WeatherDayController < ApplicationController
   def sanitize_hour(hour_digit)
     if hour_digit <= 0
       hour_digit += 24
+    else
+      hour_digit
     end
   end
 
