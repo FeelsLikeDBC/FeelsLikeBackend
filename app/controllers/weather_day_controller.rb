@@ -140,66 +140,66 @@ class WeatherDayController < ApplicationController
 
     @monthly_average_feels_like_day =
     [
-      @jan_avg_day.reduce(:+)/@jan_avg_day.length,
-      @feb_avg_day.reduce(:+)/@feb_avg_day.length,
-      @mar_avg_day.reduce(:+)/@mar_avg_day.length,
-      @apr_avg_day.reduce(:+)/@apr_avg_day.length,
-      @may_avg_day.reduce(:+)/@may_avg_day.length,
-      @jun_avg_day.reduce(:+)/@jun_avg_day.length,
-      @jul_avg_day.reduce(:+)/@jul_avg_day.length,
-      @aug_avg_day.reduce(:+)/@aug_avg_day.length,
-      @sep_avg_day.reduce(:+)/@sep_avg_day.length,
-      @oct_avg_day.reduce(:+)/@oct_avg_day.length,
-      @nov_avg_day.reduce(:+)/@nov_avg_day.length,
-      @dec_avg_day.reduce(:+)/@dec_avg_day.length
+      (@jan_avg_day.reduce(:+)/@jan_avg_day.length).round(2),
+      (@feb_avg_day.reduce(:+)/@feb_avg_day.length).round(2),
+      (@mar_avg_day.reduce(:+)/@mar_avg_day.length).round(2),
+      (@apr_avg_day.reduce(:+)/@apr_avg_day.length).round(2),
+      (@may_avg_day.reduce(:+)/@may_avg_day.length).round(2),
+      (@jun_avg_day.reduce(:+)/@jun_avg_day.length).round(2),
+      (@jul_avg_day.reduce(:+)/@jul_avg_day.length).round(2),
+      (@aug_avg_day.reduce(:+)/@aug_avg_day.length).round(2),
+      (@sep_avg_day.reduce(:+)/@sep_avg_day.length).round(2),
+      (@oct_avg_day.reduce(:+)/@oct_avg_day.length).round(2),
+      (@nov_avg_day.reduce(:+)/@nov_avg_day.length).round(2),
+      (@dec_avg_day.reduce(:+)/@dec_avg_day.length).round(2)
     ]
 
     @monthly_average_feels_like_night =
     [
-      @jan_avg_night.reduce(:+)/@jan_avg_night.length,
-      @feb_avg_night.reduce(:+)/@feb_avg_night.length,
-      @mar_avg_night.reduce(:+)/@mar_avg_night.length,
-      @apr_avg_night.reduce(:+)/@apr_avg_night.length,
-      @may_avg_night.reduce(:+)/@may_avg_night.length,
-      @jun_avg_night.reduce(:+)/@jun_avg_night.length,
-      @jul_avg_night.reduce(:+)/@jul_avg_night.length,
-      @aug_avg_night.reduce(:+)/@aug_avg_night.length,
-      @sep_avg_night.reduce(:+)/@sep_avg_night.length,
-      @oct_avg_night.reduce(:+)/@oct_avg_night.length,
-      @nov_avg_night.reduce(:+)/@nov_avg_night.length,
-      @dec_avg_night.reduce(:+)/@dec_avg_night.length
+      (@jan_avg_night.reduce(:+)/@jan_avg_night.length).round(2),
+      (@feb_avg_night.reduce(:+)/@feb_avg_night.length).round(2),
+      (@mar_avg_night.reduce(:+)/@mar_avg_night.length).round(2),
+      (@apr_avg_night.reduce(:+)/@apr_avg_night.length).round(2),
+      (@may_avg_night.reduce(:+)/@may_avg_night.length).round(2),
+      (@jun_avg_night.reduce(:+)/@jun_avg_night.length).round(2),
+      (@jul_avg_night.reduce(:+)/@jul_avg_night.length).round(2),
+      (@aug_avg_night.reduce(:+)/@aug_avg_night.length).round(2),
+      (@sep_avg_night.reduce(:+)/@sep_avg_night.length).round(2),
+      (@oct_avg_night.reduce(:+)/@oct_avg_night.length).round(2),
+      (@nov_avg_night.reduce(:+)/@nov_avg_night.length).round(2),
+      (@dec_avg_night.reduce(:+)/@dec_avg_night.length).round(2)
     ]
 
     @monthly_feels_like_high =
     [
-      @jan_high.reduce(:+)/@jan_high.length,
-      @feb_high.reduce(:+)/@feb_high.length,
-      @mar_high.reduce(:+)/@mar_high.length,
-      @apr_high.reduce(:+)/@apr_high.length,
-      @may_high.reduce(:+)/@may_high.length,
-      @jun_high.reduce(:+)/@jun_high.length,
-      @jul_high.reduce(:+)/@jul_high.length,
-      @aug_high.reduce(:+)/@aug_high.length,
-      @sep_high.reduce(:+)/@sep_high.length,
-      @oct_high.reduce(:+)/@oct_high.length,
-      @nov_high.reduce(:+)/@nov_high.length,
-      @dec_high.reduce(:+)/@dec_high.length
+      (@jan_high.reduce(:+)/@jan_high.length).round(2),
+      (@feb_high.reduce(:+)/@feb_high.length).round(2),
+      (@mar_high.reduce(:+)/@mar_high.length).round(2),
+      (@apr_high.reduce(:+)/@apr_high.length).round(2),
+      (@may_high.reduce(:+)/@may_high.length).round(2),
+      (@jun_high.reduce(:+)/@jun_high.length).round(2),
+      (@jul_high.reduce(:+)/@jul_high.length).round(2),
+      (@aug_high.reduce(:+)/@aug_high.length).round(2),
+      (@sep_high.reduce(:+)/@sep_high.length).round(2),
+      (@oct_high.reduce(:+)/@oct_high.length).round(2),
+      (@nov_high.reduce(:+)/@nov_high.length).round(2),
+      (@dec_high.reduce(:+)/@dec_high.length).round(2)
     ]
 
     @monthly_feels_like_low =
     [
-      @jan_low.reduce(:+)/@jan_low.length,
-      @feb_low.reduce(:+)/@feb_low.length,
-      @mar_low.reduce(:+)/@mar_low.length,
-      @apr_low.reduce(:+)/@apr_low.length,
-      @may_low.reduce(:+)/@may_low.length,
-      @jun_low.reduce(:+)/@jun_low.length,
-      @jul_low.reduce(:+)/@jul_low.length,
-      @aug_low.reduce(:+)/@aug_low.length,
-      @sep_low.reduce(:+)/@sep_low.length,
-      @oct_low.reduce(:+)/@oct_low.length,
-      @nov_low.reduce(:+)/@nov_low.length,
-      @dec_low.reduce(:+)/@dec_low.length
+      (@jan_low.reduce(:+)/@jan_low.length).round(2),
+      (@feb_low.reduce(:+)/@feb_low.length).round(2),
+      (@mar_low.reduce(:+)/@mar_low.length).round(2),
+      (@apr_low.reduce(:+)/@apr_low.length).round(2),
+      (@may_low.reduce(:+)/@may_low.length).round(2),
+      (@jun_low.reduce(:+)/@jun_low.length).round(2),
+      (@jul_low.reduce(:+)/@jul_low.length).round(2),
+      (@aug_low.reduce(:+)/@aug_low.length).round(2),
+      (@sep_low.reduce(:+)/@sep_low.length).round(2),
+      (@oct_low.reduce(:+)/@oct_low.length).round(2),
+      (@nov_low.reduce(:+)/@nov_low.length).round(2),
+      (@dec_low.reduce(:+)/@dec_low.length).round(2)
     ]
 
     render json:
@@ -300,40 +300,40 @@ class WeatherDayController < ApplicationController
     end
     @yearly_average_feels_like_day =
     [
-      _2010_avg_feels_like_day: @_2010_avg_day.reduce(:+)/@_2010_avg_day.length,
-      _2011_avg_feels_like_day: @_2011_avg_day.reduce(:+)/@_2011_avg_day.length,
-      _2012_avg_feels_like_day: @_2012_avg_day.reduce(:+)/@_2012_avg_day.length,
-      _2013_avg_feels_like_day: @_2013_avg_day.reduce(:+)/@_2013_avg_day.length,
-      _2014_avg_feels_like_day: @_2014_avg_day.reduce(:+)/@_2014_avg_day.length,
-      _2015_avg_feels_like_day: @_2015_avg_day.reduce(:+)/@_2015_avg_day.length
+      (@_2010_avg_day.reduce(:+)/@_2010_avg_day.length).round(2),
+      (@_2011_avg_day.reduce(:+)/@_2011_avg_day.length).round(2),
+      (@_2012_avg_day.reduce(:+)/@_2012_avg_day.length).round(2),
+      (@_2013_avg_day.reduce(:+)/@_2013_avg_day.length).round(2),
+      (@_2014_avg_day.reduce(:+)/@_2014_avg_day.length).round(2),
+      (@_2015_avg_day.reduce(:+)/@_2015_avg_day.length).round(2)
     ]
 
     @yearly_average_feels_like_night =
     [
-      _2010_avg_feels_like_night: @_2010_avg_night.reduce(:+)/@_2010_avg_night.length,
-      _2011_avg_feels_like_night: @_2011_avg_night.reduce(:+)/@_2011_avg_night.length,
-      _2012_avg_feels_like_night: @_2012_avg_night.reduce(:+)/@_2012_avg_night.length,
-      _2013_avg_feels_like_night: @_2013_avg_night.reduce(:+)/@_2013_avg_night.length,
-      _2014_avg_feels_like_night: @_2014_avg_night.reduce(:+)/@_2014_avg_night.length,
-      _2015_avg_feels_like_night: @_2015_avg_night.reduce(:+)/@_2015_avg_night.length
+      (@_2010_avg_night.reduce(:+)/@_2010_avg_night.length).round(2),
+      (@_2011_avg_night.reduce(:+)/@_2011_avg_night.length).round(2),
+      (@_2012_avg_night.reduce(:+)/@_2012_avg_night.length).round(2),
+      (@_2013_avg_night.reduce(:+)/@_2013_avg_night.length).round(2),
+      (@_2014_avg_night.reduce(:+)/@_2014_avg_night.length).round(2),
+      (@_2015_avg_night.reduce(:+)/@_2015_avg_night.length).round(2)
     ]
     @yearly_feels_like_high =
     [
-      _2010_feels_like_high: @_2010_high.reduce(:+)/@_2010_high.length,
-      _2011_feels_like_high: @_2011_high.reduce(:+)/@_2011_high.length,
-      _2012_feels_like_high: @_2012_high.reduce(:+)/@_2012_high.length,
-      _2013_feels_like_high: @_2013_high.reduce(:+)/@_2013_high.length,
-      _2014_feels_like_high: @_2014_high.reduce(:+)/@_2014_high.length,
-      _2015_feels_like_high: @_2015_high.reduce(:+)/@_2015_high.length
+      (@_2010_high.reduce(:+)/@_2010_high.length).round(2),
+      (@_2011_high.reduce(:+)/@_2011_high.length).round(2),
+      (@_2012_high.reduce(:+)/@_2012_high.length).round(2),
+      (@_2013_high.reduce(:+)/@_2013_high.length).round(2),
+      (@_2014_high.reduce(:+)/@_2014_high.length).round(2),
+      (@_2015_high.reduce(:+)/@_2015_high.length).round(2)
     ]
     @yearly_feels_like_low =
     [
-      _2010_feels_like_low: @_2010_low.reduce(:+)/@_2010_low.length,
-      _2011_feels_like_low: @_2011_low.reduce(:+)/@_2011_low.length,
-      _2012_feels_like_low: @_2012_low.reduce(:+)/@_2012_low.length,
-      _2013_feels_like_low: @_2013_low.reduce(:+)/@_2013_low.length,
-      _2014_feels_like_low: @_2014_low.reduce(:+)/@_2014_low.length,
-      _2015_feels_like_low: @_2015_low.reduce(:+)/@_2015_low.length
+      (@_2010_low.reduce(:+)/@_2010_low.length).round(2),
+      (@_2011_low.reduce(:+)/@_2011_low.length).round(2),
+      (@_2012_low.reduce(:+)/@_2012_low.length).round(2),
+      (@_2013_low.reduce(:+)/@_2013_low.length).round(2),
+      (@_2014_low.reduce(:+)/@_2014_low.length).round(2),
+      (@_2015_low.reduce(:+)/@_2015_low.length).round(2)
     ]
 
     render json:
