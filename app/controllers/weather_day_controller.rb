@@ -137,105 +137,79 @@ class WeatherDayController < ApplicationController
         @dec_low << day.low_apparent_temp
       end
     end
-    @january =
-    {
+
+    @average_feels_like_day =
+    [
       jan_avg_feels_like_day: @jan_avg_day.reduce(:+)/@jan_avg_day.length,
-      jan_avg_feels_like_night: @jan_avg_night.reduce(:+)/@jan_avg_night.length,
-      jan_feels_like_high: @jan_high.reduce(:+)/@jan_high.length,
-      jan_feels_like_low: @jan_low.reduce(:+)/@jan_low.length
-    }
-    @february =
-    {
       feb_avg_feels_like_day: @feb_avg_day.reduce(:+)/@feb_avg_day.length,
-      feb_avg_feels_like_night: @feb_avg_night.reduce(:+)/@feb_avg_night.length,
-      feb_feels_like_high: @feb_high.reduce(:+)/@feb_high.length,
-      feb_feels_like_low: @feb_low.reduce(:+)/@feb_low.length
-    }
-    @march =
-    {
       mar_avg_feels_like_day: @mar_avg_day.reduce(:+)/@mar_avg_day.length,
-      mar_avg_feels_like_night: @mar_avg_night.reduce(:+)/@mar_avg_night.length,
-      mar_feels_like_high: @mar_high.reduce(:+)/@mar_high.length,
-      mar_feels_like_low: @mar_low.reduce(:+)/@mar_low.length
-    }
-    @april =
-    {
       apr_avg_feels_like_day: @apr_avg_day.reduce(:+)/@apr_avg_day.length,
-      apr_avg_feels_like_night: @apr_avg_night.reduce(:+)/@apr_avg_night.length,
-      apr_feels_like_high: @apr_high.reduce(:+)/@apr_high.length,
-      apr_feels_like_low: @apr_low.reduce(:+)/@apr_low.length
-    }
-    @may =
-    {
       may_avg_feels_like_day: @may_avg_day.reduce(:+)/@may_avg_day.length,
-      may_avg_feels_like_night: @may_avg_night.reduce(:+)/@may_avg_night.length,
-      may_feels_like_high: @may_high.reduce(:+)/@may_high.length,
-      may_feels_like_low: @may_low.reduce(:+)/@may_low.length
-    }
-    @june =
-    {
       jun_avg_feels_like_day: @jun_avg_day.reduce(:+)/@jun_avg_day.length,
-      jun_avg_feels_like_night: @jun_avg_night.reduce(:+)/@jun_avg_night.length,
-      jun_feels_like_high: @jun_high.reduce(:+)/@jun_high.length,
-      jun_feels_like_low: @jun_low.reduce(:+)/@jun_low.length
-    }
-    @july =
-    {
       jul_avg_feels_like_day: @jul_avg_day.reduce(:+)/@jul_avg_day.length,
-      jul_avg_feels_like_night: @jul_avg_night.reduce(:+)/@jul_avg_night.length,
-      jul_feels_like_high: @jul_high.reduce(:+)/@jul_high.length,
-      jul_feels_like_low: @jul_low.reduce(:+)/@jul_low.length
-    }
-    @august =
-    {
       aug_avg_feels_like_day: @aug_avg_day.reduce(:+)/@aug_avg_day.length,
-      aug_avg_feels_like_night: @aug_avg_night.reduce(:+)/@aug_avg_night.length,
-      aug_feels_like_high: @aug_high.reduce(:+)/@aug_high.length,
-      aug_feels_like_low: @aug_low.reduce(:+)/@aug_low.length
-    }
-    @september =
-    {
       sep_avg_feels_like_day: @sep_avg_day.reduce(:+)/@sep_avg_day.length,
-      sep_avg_feels_like_night: @sep_avg_night.reduce(:+)/@sep_avg_night.length,
-      sep_feels_like_high: @sep_high.reduce(:+)/@sep_high.length,
-      sep_feels_like_low: @sep_low.reduce(:+)/@sep_low.length
-    }
-    @october =
-    {
       oct_avg_feels_like_day: @oct_avg_day.reduce(:+)/@oct_avg_day.length,
-      oct_avg_feels_like_night: @oct_avg_night.reduce(:+)/@oct_avg_night.length,
-      oct_feels_like_high: @oct_high.reduce(:+)/@oct_high.length,
-      oct_feels_like_low: @oct_low.reduce(:+)/@oct_low.length
-    }
-    @november =
-    {
       nov_avg_feels_like_day: @nov_avg_day.reduce(:+)/@nov_avg_day.length,
+      dec_avg_feels_like_day: @dec_avg_day.reduce(:+)/@dec_avg_day.length
+    ]
+
+    @average_feels_like_night =
+    [
+      jan_avg_feels_like_night: @jan_avg_night.reduce(:+)/@jan_avg_night.length,
+      feb_avg_feels_like_night: @feb_avg_night.reduce(:+)/@feb_avg_night.length,
+      mar_avg_feels_like_night: @mar_avg_night.reduce(:+)/@mar_avg_night.length,
+      apr_avg_feels_like_night: @apr_avg_night.reduce(:+)/@apr_avg_night.length,
+      may_avg_feels_like_night: @may_avg_night.reduce(:+)/@may_avg_night.length,
+      jun_avg_feels_like_night: @jun_avg_night.reduce(:+)/@jun_avg_night.length,
+      jul_avg_feels_like_night: @jul_avg_night.reduce(:+)/@jul_avg_night.length,
+      aug_avg_feels_like_night: @aug_avg_night.reduce(:+)/@aug_avg_night.length,
+      sep_avg_feels_like_night: @sep_avg_night.reduce(:+)/@sep_avg_night.length,
+      oct_avg_feels_like_night: @oct_avg_night.reduce(:+)/@oct_avg_night.length,
       nov_avg_feels_like_night: @nov_avg_night.reduce(:+)/@nov_avg_night.length,
+      dec_avg_feels_like_night: @dec_avg_night.reduce(:+)/@dec_avg_night.length
+    ]
+
+    @feels_like_high =
+    [
+      jan_feels_like_high: @jan_high.reduce(:+)/@jan_high.length,
+      feb_feels_like_high: @feb_high.reduce(:+)/@feb_high.length,
+      mar_feels_like_high: @mar_high.reduce(:+)/@mar_high.length,
+      apr_feels_like_high: @apr_high.reduce(:+)/@apr_high.length,
+      may_feels_like_high: @may_high.reduce(:+)/@may_high.length,
+      jun_feels_like_high: @jun_high.reduce(:+)/@jun_high.length,
+      jul_feels_like_high: @jul_high.reduce(:+)/@jul_high.length,
+      aug_feels_like_high: @aug_high.reduce(:+)/@aug_high.length,
+      sep_feels_like_high: @sep_high.reduce(:+)/@sep_high.length,
+      oct_feels_like_high: @oct_high.reduce(:+)/@oct_high.length,
       nov_feels_like_high: @nov_high.reduce(:+)/@nov_high.length,
-      nov_feels_like_low: @nov_low.reduce(:+)/@nov_low.length
-    }
-    @december =
-    {
-      dec_avg_feels_like_day: @dec_avg_day.reduce(:+)/@dec_avg_day.length,
-      dec_avg_feels_like_night: @dec_avg_night.reduce(:+)/@dec_avg_night.length,
-      dec_feels_like_high: @dec_high.reduce(:+)/@dec_high.length,
+      dec_feels_like_high: @dec_high.reduce(:+)/@dec_high.length
+    ]
+
+    @feels_like_low =
+    [
+      jan_feels_like_low: @jan_low.reduce(:+)/@jan_low.length,
+      feb_feels_like_low: @feb_low.reduce(:+)/@feb_low.length,
+      mar_feels_like_low: @mar_low.reduce(:+)/@mar_low.length,
+      apr_feels_like_low: @apr_low.reduce(:+)/@apr_low.length,
+      may_feels_like_low: @may_low.reduce(:+)/@may_low.length,
+      jun_feels_like_low: @jun_low.reduce(:+)/@jun_low.length,
+      jul_feels_like_low: @jul_low.reduce(:+)/@jul_low.length,
+      aug_feels_like_low: @aug_low.reduce(:+)/@aug_low.length,
+      sep_feels_like_low: @sep_low.reduce(:+)/@sep_low.length,
+      oct_feels_like_low: @oct_low.reduce(:+)/@oct_low.length,
+      nov_feels_like_low: @nov_low.reduce(:+)/@nov_low.length,
       dec_feels_like_low: @dec_low.reduce(:+)/@dec_low.length
-    }
+    ]
+
+
 
     render json:
     {
-      january: @january,
-      february: @february,
-      march: @march,
-      april: @april,
-      may: @may,
-      june: @june,
-      july: @july,
-      august: @august,
-      september: @september,
-      october: @october,
-      november: @november,
-      december: @december
+      average_feels_like_day: @average_feels_like_day,
+      average_feels_like_night: @average_feels_like_night,
+      feels_like_high: @feels_like_high,
+      feels_like_low: @feels_like_low
     }
   end
 
