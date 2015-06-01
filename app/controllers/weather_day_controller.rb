@@ -637,8 +637,8 @@ class WeatherDayController < ApplicationController
       august_darkness: @aug_darkness.reduce(:+)/@aug_darkness.length,
       september_darkness: @sep_darkness.reduce(:+)/@sep_darkness.length,
       october_darkness: @oct_darkness.reduce(:+)/@oct_darkness.length
-      # november_darkness: @nov_darkness.reduce(:+)/@nov_darkness.length,
-      # december_darkness: @dec_darkness.reduce(:+)/@dec_darkness.length
+      november_darkness: @nov_darkness.reduce(:+)/@nov_darkness.length,
+      december_darkness: @dec_darkness.reduce(:+)/@dec_darkness.length
     ]
 
     render json:
@@ -868,7 +868,7 @@ class WeatherDayController < ApplicationController
       hour, minute = x.split(':')
       total_minutes = hour.to_i * 60 + minute.to_i
     end.reduce(:+)/size
-    hour_var = ((avg_minutes/60) + (@city.offset.to_i)).to_s
+    hour_var = sanitize_hour((avg_minutes/60) + (@city.offset.to_i)).to_s
     minute_var = (avg_minutes%60).to_s
     "#{hour_var.rjust(2, '0')}:#{minute_var.rjust(2, '0')}"
   end
