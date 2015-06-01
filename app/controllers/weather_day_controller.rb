@@ -518,7 +518,7 @@ class WeatherDayController < ApplicationController
 
     @weather = @city.weather_days.order(:date).each do |day|
       if day.month == 1
-        @jan_sunrise << Time.at(day.sunrise, @city.offset).strftime('%H:%M')
+        @jan_sunrise << Time.at(day.sunrise).strftime('%H:%M')
         @jan_sunset << Time.at(day.sunset).strftime('%H:%M')
         @jan_daylight << (day.sunset - day.sunrise)
         @jan_darkness << (86400 - (day.sunset - day.sunrise))
@@ -859,7 +859,7 @@ class WeatherDayController < ApplicationController
       hour, minute = x.split(':')
       total_minutes = hour.to_i * 60 + minute.to_i
     end.reduce(:+)/size
-    "#{avg_minutes/60}:#{avg_minutes%60}"
+    "#{(avg_minutes/60).rjust(2, '0')}:#{(avg_minutes%60).rjust(2, '0')}"
   end
 
 end
