@@ -206,10 +206,10 @@ class WeatherDayController < ApplicationController
 
     render json:
     {
-      monthly_average_feels_like_day: @average_feels_like_day,
-      monthly_average_feels_like_night: @average_feels_like_night,
-      monthly_feels_like_high: @feels_like_high,
-      monthly_feels_like_low: @feels_like_low
+      monthly_average_feels_like_day: @monthly_average_feels_like_day,
+      monthly_average_feels_like_night: @monthly_average_feels_like_night,
+      monthly_feels_like_high: @monthly_feels_like_high,
+      monthly_feels_like_low: @monthly_feels_like_low
     }
   end
 
@@ -467,22 +467,150 @@ class WeatherDayController < ApplicationController
       }
   end
 
+  def rise_set_monthly_crushed
+    @city = City.find(params[:id])
+
+    @jan_sunrise = []
+    @jan_sunset = []
+    @jan_daylight = []
+    @jan_darkness = []
+    @feb_sunrise = []
+    @feb_sunset = []
+    @feb_daylight = []
+    @feb_darkness = []
+    @mar_sunrise = []
+    @mar_sunset = []
+    @mar_daylight = []
+    @mar_darkness = []
+    @apr_sunrise = []
+    @apr_sunset = []
+    @apr_daylight = []
+    @apr_darkness = []
+    @may_sunrise = []
+    @may_sunset = []
+    @may_daylight = []
+    @may_darkness = []
+    @jun_sunrise = []
+    @jun_sunset = []
+    @jun_daylight = []
+    @jun_darkness = []
+    @jul_sunrise = []
+    @jul_sunset = []
+    @jul_daylight = []
+    @jul_darkness = []
+    @aug_sunrise = []
+    @aug_sunset = []
+    @aug_daylight = []
+    @aug_darkness = []
+    @sep_sunrise = []
+    @sep_sunset = []
+    @sep_daylight = []
+    @sep_darkness = []
+    @oct_sunrise = []
+    @oct_sunset = []
+    @oct_daylight = []
+    @oct_darkness = []
+    @nov_sunrise = []
+    @nov_sunset = []
+    @nov_daylight = []
+    @nov_darkness = []
+    @dec_sunrise = []
+    @dec_sunset = []
+    @dec_daylight = []
+    @dec_darkness = []
+
+    @weather = @city.weather_days.order(:date).each do |day|
+      if day.month == 1
+        @jan_sunrise << day.sunrise
+        @jan_sunset << day.sunset
+        @jan_daylight << (day.sunset - day.sunrise)
+        @jan_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 2
+        @feb_sunrise << day.sunrise
+        @feb_sunset << day.sunset
+        @feb_daylight << (day.sunset - day.sunrise)
+        @feb_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 3
+        @mar_sunrise << day.sunrise
+        @mar_sunset << day.sunset
+        @mar_daylight << (day.sunset - day.sunrise)
+        @mar_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 4
+        @apr_sunrise << day.sunrise
+        @apr_sunset << day.sunset
+        @apr_daylight << (day.sunset - day.sunrise)
+        @apr_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 5
+        @may_sunrise << day.sunrise
+        @may_sunset << day.sunset
+        @may_daylight << (day.sunset - day.sunrise)
+        @may_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 6
+        @jun_sunrise << day.sunrise
+        @jun_sunset << day.sunset
+        @jun_daylight << (day.sunset - day.sunrise)
+        @jun_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 7
+        @jul_sunrise << day.sunrise
+        @jul_sunset << day.sunset
+        @jul_daylight << (day.sunset - day.sunrise)
+        @jul_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 8
+        @aug_sunrise << day.sunrise
+        @aug_sunset << day.sunset
+        @aug_daylight << (day.sunset - day.sunrise)
+        @aug_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 9
+        @sep_sunrise << day.sunrise
+        @sep_sunset << day.sunset
+        @sep_daylight << (day.sunset - day.sunrise)
+        @sep_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 10
+        @oct_sunrise << day.sunrise
+        @oct_sunset << day.sunset
+        @oct_daylight << (day.sunset - day.sunrise)
+        @oct_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 11
+        @nov_sunrise << day.sunrise
+        @nov_sunset << day.sunset
+        @nov_daylight << (day.sunset - day.sunrise)
+        @nov_darkness << (86400 - (day.sunset - day.sunrise))
+      elsif day.month == 12
+        @dec_sunrise << day.sunrise
+        @dec_sunset << day.sunset
+        @dec_daylight << (day.sunset - day.sunrise)
+        @dec_darkness << (86400 - (day.sunset - day.sunrise))
+      end
+    end
+
+    @monthly_sunrise =
+    [
+      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
+      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
+      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
+      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
+      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
+      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
+      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
+      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
+      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
+      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
+      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
+      january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length
+    ]
+
+
+
   def rise_set_monthly
     @city = City.find(params[:id])
     @weather = @city.weather_days.order(:date).map do |day|
       {
-        city: day.city_id,
-        date: day.date,
-        year: day.year,
-        month: day.month,
-        day: day.day,
         sunrise: day.sunrise,
         sunset: day.sunset,
         day_length: (day.sunset - day.sunrise),
         night_length: (86400 - (day.sunset - day.sunrise))
       }
     end
-
     @weather = @weather.group_by do |weather_hash|
       weather_hash[:month]
     end
