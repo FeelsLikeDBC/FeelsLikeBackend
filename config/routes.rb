@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
 # Rise Set
   match '/city/:id/rise_set' => "weather_day#rise_set", :via => [:get]
+  match '/city/:id/rise_set_monthly_crushed' => "weather_day#rise_set_monthly_crushed", :via => [:get]
   match '/city/:id/rise_set_monthly' => "weather_day#rise_set_monthly", :via => [:get]
   match '/city/:id/rise_set_yearly' => "weather_day#rise_set_yearly", :via => [:get]
 
