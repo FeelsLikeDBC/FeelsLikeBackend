@@ -598,7 +598,7 @@ class WeatherDayController < ApplicationController
       january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length,
       january_sunrise: @jan_sunset.reduce(:+)/@jan_sunset.length
     ]
-
+  end
 
 
   def rise_set_monthly
