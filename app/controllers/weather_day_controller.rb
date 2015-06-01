@@ -584,7 +584,7 @@ class WeatherDayController < ApplicationController
 
     @monthly_sunrise =
     [
-      january_sunrise: "#{(@jan_sunrise_hour.reduce(:+)/@jan_sunrise_hour.length).round}:#{(@jan_sunrise_minute.reduce(:+)/@jan_sunrise_minute.length).round}",
+      january_sunrise: "#{(@jan_sunrise_hour.reduce(:+)/@jan_sunrise_hour.length).round}:#{(@jan_sunrise_minute.reduce(:+)/@jan_sunrise_minute.length).round}"
       # february_sunrise: @feb_sunrise.reduce(:+)/@feb_sunrise.length,
       # march_sunrise: @mar_sunrise.reduce(:+)/@mar_sunrise.length,
       # april_sunrise: @apr_sunrise.reduce(:+)/@apr_sunrise.length,
@@ -599,7 +599,7 @@ class WeatherDayController < ApplicationController
     ]
     @monthly_sunset =
     [
-      january_sunset: "#{(@jan_sunset_hour.reduce(:+)/@jan_sunset_hour.length).round}:#{(@jan_sunset_minute.reduce(:+)/@jan_sunset_minute.length).round}",
+      january_sunset: "#{(@jan_sunset_hour.reduce(:+)/@jan_sunset_hour.length).round}:#{(@jan_sunset_minute.reduce(:+)/@jan_sunset_minute.length).round}"
       # february_sunset: @feb_sunset.reduce(:+)/@feb_sunset.length,
       # march_sunset: @mar_sunset.reduce(:+)/@mar_sunset.length,
       # april_sunset: @apr_sunset.reduce(:+)/@apr_sunset.length,
@@ -614,7 +614,7 @@ class WeatherDayController < ApplicationController
     ]
     @monthly_daylight =
     [
-      january_daylight: @jan_daylight.reduce(:+)/@jan_daylight.length,
+      january_daylight: @jan_daylight.reduce(:+)/@jan_daylight.length
       # february_daylight: @feb_daylight.reduce(:+)/@feb_daylight.length,
       # march_daylight: @mar_daylight.reduce(:+)/@mar_daylight.length,
       # april_daylight: @apr_daylight.reduce(:+)/@apr_daylight.length,
@@ -629,7 +629,7 @@ class WeatherDayController < ApplicationController
     ]
     @monthly_darkness =
     [
-      january_darkness: @jan_darkness.reduce(:+)/@jan_darkness.length,
+      january_darkness: @jan_darkness.reduce(:+)/@jan_darkness.length
       # february_darkness: @feb_darkness.reduce(:+)/@feb_darkness.length,
       # march_darkness: @mar_darkness.reduce(:+)/@mar_darkness.length,
       # april_darkness: @apr_darkness.reduce(:+)/@apr_darkness.length,
