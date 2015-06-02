@@ -78,7 +78,7 @@ class DB_SEEDER
 
     def wu_args(date,city)
       {
-        api: ENV['WUAPI_KEY1'],
+        api: ENV['WUAPI_KEY2'],
         year: date.strftime('%Y'), # Year as string for WU
         month: date.strftime('%m'), # Month as string for WU
         day: date.strftime('%d'), # Day as string for WU
@@ -176,5 +176,3 @@ class DB_SEEDER
 end
 
 # DB_SEEDER.pull_city_data(City.fifth,DateTime.new(2010,5,1,0,0,0, City.fifth.offset))
-
-
