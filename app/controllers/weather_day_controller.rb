@@ -6,7 +6,7 @@ class WeatherDayController < ApplicationController
       day.date = Time.at(day.date).yday
       day
     end
-    @days = Array.new(366) do |i|
+    @days = Array.new(365) do |i|
       days_array = all_days.select do |day|
         day.date == i + 1
       end
