@@ -394,149 +394,41 @@ class WeatherDayController < ApplicationController
 
   def actual_monthly_crushed
     @city = City.find(params[:id])
-
-    @jan_avg = []
-    @jan_high = []
-    @jan_low = []
-    @feb_avg = []
-    @feb_high = []
-    @feb_low = []
-    @mar_avg = []
-    @mar_high = []
-    @mar_low = []
-    @apr_avg = []
-    @apr_high = []
-    @apr_low = []
-    @may_avg = []
-    @may_high = []
-    @may_low = []
-    @jun_avg = []
-    @jun_high = []
-    @jun_low = []
-    @jul_avg = []
-    @jul_high = []
-    @jul_low = []
-    @aug_avg = []
-    @aug_high = []
-    @aug_low = []
-    @sep_avg = []
-    @sep_high = []
-    @sep_low = []
-    @oct_avg = []
-    @oct_high = []
-    @oct_low = []
-    @nov_avg = []
-    @nov_high = []
-    @nov_low = []
-    @dec_avg = []
-    @dec_high = []
-    @dec_low = []
-
-    @city.weather_days.order(:date).each do |day|
-      if day.month == 1
-        @jan_avg << day.avg_temp
-        @jan_high << day.high_temp
-        @jan_low << day.low_temp
-      elsif day.month == 2
-        @feb_avg << day.avg_temp
-        @feb_high << day.high_temp
-        @feb_low << day.low_temp
-      elsif day.month == 3
-        @mar_avg << day.avg_temp
-        @mar_high << day.high_temp
-        @mar_low << day.low_temp
-      elsif day.month == 4
-        @apr_avg << day.avg_temp
-        @apr_high << day.high_temp
-        @apr_low << day.low_temp
-      elsif day.month == 5
-        @may_avg << day.avg_temp
-        @may_high << day.high_temp
-        @may_low << day.low_temp
-      elsif day.month == 6
-        @jun_avg << day.avg_temp
-        @jun_high << day.high_temp
-        @jun_low << day.low_temp
-      elsif day.month == 7
-        @jul_avg << day.avg_temp
-        @jul_high << day.high_temp
-        @jul_low << day.low_temp
-      elsif day.month == 8
-        @aug_avg << day.avg_temp
-        @aug_high << day.high_temp
-        @aug_low << day.low_temp
-      elsif day.month == 9
-        @sep_avg << day.avg_temp
-        @sep_high << day.high_temp
-        @sep_low << day.low_temp
-      elsif day.month == 10
-        @oct_avg << day.avg_temp
-        @oct_high << day.high_temp
-        @oct_low << day.low_temp
-      elsif day.month == 11
-        @nov_avg << day.avg_temp
-        @nov_high << day.high_temp
-        @nov_low << day.low_temp
-      elsif day.month == 12
-        @dec_avg << day.avg_temp
-        @dec_high << day.high_temp
-        @dec_low << day.low_temp
-      end
+    all_days = @city.weather_days.each.map do |day|
+      day.date = Time.at(day.date).yday
+      day
     end
+    @days = Array.new(366) do |i|
+      days_array = all_days.select do |day|
+        day.date == i + 1
+      end
+      {
+        yday: days_array[0].date,
+        month: days_array[0].month,
+        mday: days_array[0].day,
+        sunrise: avg_times(days_array, :sunrise),
+        sunset: avg_times(days_array, :sunset),
+        cloud_cover: days_array.map { |day| day.cloud_cover }.reduce(:+)/days_array.length,
+        avg_apparent_day_temp: days_array.map { |day| day.avg_apparent_day_temp }.reduce(:+)/days_array.length,
+        avg_apparent_night_temp: days_array.map { |day| day.avg_apparent_night_temp }.reduce(:+)/days_array.length,
+        high_apparent_temp: days_array.map { |day| day.high_apparent_temp }.reduce(:+)/days_array.length,
+        low_apparent_temp: days_array.map { |day| day.low_apparent_temp }.reduce(:+)/days_array.length,
+        precipitation: days_array.map { |day| day.precipitation }.reduce(:+)/days_array.length,
+        snowfall: days_array.map { |day| day.snowfall }.reduce(:+)/days_array.length,
+        avg_temp: days_array.map { |day| day.avg_temp }.reduce(:+)/days_array.length,
+        high_temp: days_array.map { |day| day.high_temp }.reduce(:+)/days_array.length,
+        low_temp: days_array.map { |day| day.low_temp }.reduce(:+)/days_array.length,
+        avg_dewpt: days_array.map { |day| day.avg_dewpt }.reduce(:+)/days_array.length,
+        avg_wind_spd: days_array.map { |day| day.avg_wind_spd }.reduce(:+)/days_array.length,
+        avg_wind_dir: days_array.map { |day| day.avg_wind_dir }.reduce(:+)/days_array.length,
+        humidity: days_array.map { |day| day.humidity }.reduce(:+)/days_array.length
 
-    @monthly_actual_average =
-    [
-      (@jan_avg.reduce(:+)/@jan_avg.length).round(2),
-      (@feb_avg.reduce(:+)/@feb_avg.length).round(2),
-      (@mar_avg.reduce(:+)/@mar_avg.length).round(2),
-      (@apr_avg.reduce(:+)/@apr_avg.length).round(2),
-      (@may_avg.reduce(:+)/@may_avg.length).round(2),
-      (@jun_avg.reduce(:+)/@jun_avg.length).round(2),
-      (@jul_avg.reduce(:+)/@jul_avg.length).round(2),
-      (@aug_avg.reduce(:+)/@aug_avg.length).round(2),
-      (@sep_avg.reduce(:+)/@sep_avg.length).round(2),
-      (@oct_avg.reduce(:+)/@oct_avg.length).round(2),
-      (@nov_avg.reduce(:+)/@nov_avg.length).round(2),
-      (@dec_avg.reduce(:+)/@dec_avg.length).round(2)
-    ]
-
-    @monthly_actual_high =
-    [
-      (@jan_high.reduce(:+)/@jan_high.length).round(2),
-      (@feb_high.reduce(:+)/@feb_high.length).round(2),
-      (@mar_high.reduce(:+)/@mar_high.length).round(2),
-      (@apr_high.reduce(:+)/@apr_high.length).round(2),
-      (@may_high.reduce(:+)/@may_high.length).round(2),
-      (@jun_high.reduce(:+)/@jun_high.length).round(2),
-      (@jul_high.reduce(:+)/@jul_high.length).round(2),
-      (@aug_high.reduce(:+)/@aug_high.length).round(2),
-      (@sep_high.reduce(:+)/@sep_high.length).round(2),
-      (@oct_high.reduce(:+)/@oct_high.length).round(2),
-      (@nov_high.reduce(:+)/@nov_high.length).round(2),
-      (@dec_high.reduce(:+)/@dec_high.length).round(2)
-    ]
-
-    @monthly_actual_low =
-    [
-      (@jan_low.reduce(:+)/@jan_low.length).round(2),
-      (@feb_low.reduce(:+)/@feb_low.length).round(2),
-      (@mar_low.reduce(:+)/@mar_low.length).round(2),
-      (@apr_low.reduce(:+)/@apr_low.length).round(2),
-      (@may_low.reduce(:+)/@may_low.length).round(2),
-      (@jun_low.reduce(:+)/@jun_low.length).round(2),
-      (@jul_low.reduce(:+)/@jul_low.length).round(2),
-      (@aug_low.reduce(:+)/@aug_low.length).round(2),
-      (@sep_low.reduce(:+)/@sep_low.length).round(2),
-      (@oct_low.reduce(:+)/@oct_low.length).round(2),
-      (@nov_low.reduce(:+)/@nov_low.length).round(2),
-      (@dec_low.reduce(:+)/@dec_low.length).round(2)
-    ]
-
+      }
+    end
     render json:
     {
-      monthly_actual_average: @monthly_actual_average,
-      monthly_actual_high: @monthly_actual_high,
-      monthly_actual_low: @monthly_actual_low
+      city: @city,
+      data: @days
     }
   end
 
@@ -1335,6 +1227,11 @@ class WeatherDayController < ApplicationController
     hour_var = sanitize_hour((avg_minutes/60) + (@city.offset.to_i)).to_s
     minute_var = (avg_minutes%60).to_s
     "#{hour_var.rjust(2, '0')}:#{minute_var.rjust(2, '0')}"
+  end
+
+  def avg_times(day_array, property)
+    times = day_array.map(&:sunrise)
+    ave_of_times(times.map do |time| Time.at(time).strftime('%H:%M'))
   end
 
 end
