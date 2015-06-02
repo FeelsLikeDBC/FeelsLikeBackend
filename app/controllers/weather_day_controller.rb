@@ -1231,7 +1231,7 @@ class WeatherDayController < ApplicationController
 
   def avg_times(day_array, property)
     times = day_array.map(&:sunrise)
-    ave_of_times(times.map { |time| Time.at(time).strftime('%H:%M')})
+    avg_of_times(times.map { |time| Time.at(time).strftime('%H:%M')})
   end
 
 end
